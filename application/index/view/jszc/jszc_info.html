@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$data.seo_title}</title>
+		<meta name="keywords" content="{$data.seo_keywords}" />
+		<meta name="description" content="{$data.seo_description}"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/css.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/technology.css"/>
+	</head>
+	<body>
+		{include file="jszc/head"}
+			<div class="container">
+				<div class="row box">
+					<h3>{$cate_data.typename}</h3>
+				</div>
+				<div class="row box box1">
+					<div class="techno_wrap">
+						<div class="detail">
+							<p><img src="{$data.boby_picture}" ></p>
+							<div class="">
+                                {:htmlspecialchars_decode($data.content)}
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		
+{include file="common/footer"}
+		
+		
+		<script src="__INDEX__/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/scroll.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

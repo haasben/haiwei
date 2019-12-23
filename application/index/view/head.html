@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$web_config.web_name}</title>
+<!-- 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+		<link rel="stylesheet" href="/public/plugins/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/js/swiper/css/swiper.min.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/jquery.fullPage.css"/>
+		<script src="__INDEX__/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="left_nav">
+			<a href="/"><img src="__INDEX__/img/logo.png" class="logo"></a>
+			<div class="menu">
+				<a href="javascript:"><img src="__INDEX__/img/menu.png" ></a>
+				<a href="javascript:"><img src="__INDEX__/img/search.png" ></a>
+				<a href="javascript:"><img src="__INDEX__/img/web.png" ></a>
+				<a href="javascript:"><img src="__INDEX__/img/wechat.png" ></a>
+				<a href="javascript:"><img src="__INDEX__/img/link.png" ></a>
+				<a href="javascript:"><img src="__INDEX__/img/other.png" ></a>
+			</div>
+		</div>
+		<div class="header">
+			<a href="/"><img class="logo" src="__INDEX__/img/logo.png" ></a>
+			<a href="#"><img src="__INDEX__/img/list.png" class="nav"></a>
+		</div>
+		<div class="mobile_nav">
+			<a href="javascript:"><img src="__INDEX__/img/menu.png" class="mobile_list_btn"></a>
+			<a href="javascript:"><img src="__INDEX__/img/search.png" ></a>
+			<a href="javascript:"><img src="__INDEX__/img/web.png" ></a>
+			<a href="javascript:"><img src="__INDEX__/img/wechat.png" ></a>
+			<a href="javascript:"><img src="__INDEX__/img/link.png" ></a>
+			<a href="javascript:"><img src="__INDEX__/img/other.png" ></a>
+		</div>
+		<ul class="menus mobile_menu">
+			<li><a href="/">{if condition="$lang == en"}Home{else}首页{/if}</a></li>
+			{volist name="$category" id="v"}
+			<li><a href="{$v.dirpath}?id={$v.id}">{$v.typename}</a></li>
+			{/volist}
+		</ul>
+		<main class="main" id="fullpage">
+			<!-- 菜单 -->
+			<nav>
+				<ul>
+					<li><a href="/">{if condition="$lang == en"}Home{else}首页{/if}</a></li>
+					{volist name="$category" id="v"}
+
+					<li><a href='{$v.dirpath}?id={$v.id}'>{$v.typename}</a></li>
+
+					{/volist}
+					
+				</ul>
+			</nav>
+

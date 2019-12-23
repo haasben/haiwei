@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$cate_data.seo_title}</title>
+		<meta name="keywords" content="{$cate_data.seo_keywords}" />
+		<meta name="description" content="{$cate_data.seo_description}"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/css.css"/>
+	</head>
+	<body>
+		{include file="gywm/head"}
+			<div class="container">
+				<div class="row box">
+					<h3>{$cate_data.typename}</h3>
+				</div>
+				<div class="row box box1">
+					<div class="title_explain">
+						{:htmlspecialchars_decode($cate_data.child.content)}
+					</div>
+					<ul class="env_list">
+						{volist name="$archives_data" id="v"}
+						<li>
+							<a href="/gywm/hjaq_info?id={$cate_data.id}&typeid={$v.id}">
+								<img src="{$v.litpic}" title="{$v.typename}">
+								<p>{$v.typename}</p>
+							</a>
+						</li>
+						{/volist}
+					</ul>
+					<!-- 认证证书 -->
+					<div class="certificate">
+						<h4>{if condition="$lang=='en'"}System certification{else}体系认证证书{/if}</h4>
+						<div class="wrap">
+							{volist name="$cate_data.child.img" id="v"}
+							<dl>
+								<dt><img src="{$v.image_url}" title="{$v.intro}"></dt>
+								<dd>{$v.intro}</dd>
+							</dl>
+							{/volist}
+						</div>
+					</div>
+				</div>
+			</div>
+	
+{include file="common/footer"}
+		<script src="__INDEX__/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/swiper/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/scroll.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

@@ -1,0 +1,7 @@
+			<nav>
+				<ul>
+					{volist name="$category" id="v"}
+				<li><a href="{if condition='$c.is_part == 1'}{$c.typelink}{else}{$v.dirpath}?id={$v.id}{/if}">{$v.typename}</a></li>
+				{/volist}
+				</ul>
+			</nav>

@@ -1,0 +1,25 @@
+<div class="container">
+	<footer>
+		<div class="wrap">
+			<div class="left">
+				<img src="{$web_config.web_logo}" class="bai" >
+				<img src="__INDEX__/img/qrcode.png" class="qrcode">
+			</div>
+			<div class="right">
+
+			{volist name="$category" id="c"}
+				<dl>
+					<dt><a href="{if condition='$c.is_part == 1'}{$c.typelink}{else}{$c.dirpath}?id={$c.id}{/if}">{$c.typename}</a></dt>
+					{volist name="$c.child" id="v"}
+					 <dd><a href="{if condition='$v.is_part == 1'}{$v.typelink}{else}{$v.dirpath}?id={$v.id}{/if}">{$v.typename}</a></dd> 
+					{/volist}
+				</dl>
+			{/volist}
+				
+			</div>
+		</div>
+		<p>{$web_config.web_copyright}</p>
+	</footer>
+</div>
+</main>
+		

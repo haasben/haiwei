@@ -1,0 +1,48 @@
+
+	<div class="left_nav">
+		<img src="__INDEX__/img/logo.png" class="logo">
+		<div class="menu">
+			<a href="javascript:"><img src="__INDEX__/img/menu.png" ></a>
+			<a href="javascript:"><img src="__INDEX__/img/search.png" ></a>
+			<a href="javascript:"><img src="__INDEX__/img/web.png" ></a>
+			<a href="javascript:"><img src="__INDEX__/img/wechat.png" ></a>
+			<a href="javascript:"><img src="__INDEX__/img/link.png" ></a>
+			<a href="javascript:"><img src="__INDEX__/img/other.png" ></a>
+		</div>
+	</div>
+	<div class="header">
+		<a href="/"><img class="logo" src="__INDEX__/img/logo.png" ></a>
+		<a href="#"><img src="__INDEX__/img/list.png" class="nav"></a>
+	</div>
+	<div class="mobile_nav">
+		<a href="javascript:"><img src="__INDEX__/img/menu.png" class="mobile_list_btn"></a>
+		<a href="javascript:"><img src="__INDEX__/img/search.png" ></a>
+		<a href="javascript:"><img src="__INDEX__/img/web.png" ></a>
+		<a href="javascript:"><img src="__INDEX__/img/wechat.png" ></a>
+		<a href="javascript:"><img src="__INDEX__/img/link.png" ></a>
+		<a href="javascript:"><img src="__INDEX__/img/other.png" ></a>
+	</div>
+	<ul class="menus mobile_menu">
+		<li><a href="#">{if condition="$lang == en"}Home{else}首页{/if}</a></li>
+		{volist name="$category" id="v"}
+		<li><a href="{$v.dirpath}?id={$v.id}">{$v.typename}</a></li>
+
+		{/volist}
+	</ul>
+	<main class="company technology product" id="honor">
+		<nav>
+			<ul>
+				<li><a href="/">{if condition="$lang == en"}Home{else}首页{/if}</a></li>
+				{volist name="$category" id="v"}
+				<li><a href="{$v.dirpath}?id={$v.id}">{$v.typename}</a></li>
+				{/volist}
+			</ul>
+		</nav>
+		<div class="banner">
+			<img src="{$cate_data.litpic}" >
+			<ul class="company_menu">
+				{volist name="$cates" id="v"}
+				<li><a href="{$v.dirpath}?id={$v.id}">{$v.typename}</a></li>
+				{/volist}
+			</ul>
+		</div>

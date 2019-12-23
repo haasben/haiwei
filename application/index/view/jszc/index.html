@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$cate_data.seo_title}</title>
+		<meta name="keywords" content="{$cate_data.seo_keywords}" />
+		<meta name="description" content="{$cate_data.seo_description}"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/css.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/technology.css"/>
+	</head>
+	<body>
+{include file="jszc/head"}
+			<div class="container">
+				<div class="row box">
+					<h3>{$cate_data.typename}</h3>
+				</div>
+				<div class="row box box1">
+					<div class="techno_wrap">
+						<div class="info">
+							{:htmlspecialchars_decode($content.content)}
+						</div>
+						<ul class="list">
+							{volist name="$cates" id="v"}
+							<li>
+								<a href="/jszc_info?id={$v.id}">
+									<img src="{$v.litpic}" >
+									<p>{$v.typename}</p>
+								</a>
+							</li>
+							{/volist}
+							{volist name="$banner" id="v"}
+							<li>
+								<a href="{$v.links}">
+									<img src="{$v.litpic}" title="{$v.title}" >
+								</a>
+							</li>
+							{/volist}
+						</ul>
+					</div>
+					
+				</div>
+			</div>
+		
+			{include file="common/footer"}
+		
+		
+		<script src="__INDEX__/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/scroll.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

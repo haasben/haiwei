@@ -1,0 +1,50 @@
+{include file="common/head"}
+
+			<div class="container">
+				<div class="row content">
+					<div class="col info_box">
+						<div class="about_info">
+							<h3>{$first_array.typename}</h3>
+							<div class="cont">
+						   	{:htmlspecialchars_decode($first_array.child.content)}
+							</div>
+							<a href="{$first_array.dirpath}?id={$first_array.id}" class="more"><img src="__INDEX__/img/more.png" ></a>
+						</div>
+					</div>
+					<div class="col about_img">
+						<img src="{$first_array.child.litpic}" >
+					</div>
+				</div>
+			</div>
+			<div class="container contents">
+				{volist name="$cate_data.child" id="v" key="k"}
+				<div class="row content">
+					{if condition="$k%2!=0"}
+					<div class="col-md-6 imgs" style="background-image: url({$v.child.litpic});">
+					</div>
+					{/if}
+					<div class="col-md-6 info">
+						<h3>{$v.typename}</h3>
+						<div class="cont">
+					  {:mb_substr(strip_tags(htmlspecialchars_decode($v.child.content)),0,150)}
+						</div>
+						<a href="{$v.dirpath}?id={$v.id}" class="more"><img src="__INDEX__/img/more.png" ></a>
+					</div>
+					{if condition="$k%2==0"}
+					<div class="col-md-6 imgs" style="background-image: url({$v.child.litpic});">
+					</div>
+					{/if}
+				</div>
+				{/volist}
+			</div>
+		
+			
+				<!-- 底部 -->
+				{include file="common/footer"}
+		<script src="__INDEX__/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/menu_head.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
+			

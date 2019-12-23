@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$cate_data.seo_title}</title>
+		<meta name="keywords" content="{$cate_data.seo_keywords}" />
+		<meta name="description" content="{$cate_data.seo_description}"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/css.css" />
+	</head>
+	<body>
+		{include file="gywm/head"}
+			<div class="container">
+				<div class="row box">
+					<h3>{$cate_data.typename}</h3>
+				</div>
+				<div class="row box box1">
+					<div class="title_explain">
+
+							{:htmlspecialchars_decode($cate_data.child.content)}
+						<!-- <p class="env">
+							海威华芯拥有多项GaAs自主知识产权<br>
+							经过多年的技术研发、积累，已形成多项发明专利、实用新型专利、外观专利。
+						</p> -->
+					</div>
+					<!-- 专利列表 -->
+					<div class="zl_list">
+						<div class="img_list">
+							{volist name="$zlcg_data" id="v"}
+							<img src="{$v.litpic}" >
+							{/volist}
+						</div>
+						<div class="msg_list">
+							{volist name="$zlcg_data" id="v"}
+							<div class="item">
+								<span>{$v.title}</span>
+								<p>{:strip_tags(htmlspecialchars_decode($v.content))}</p>
+								<hr >
+							</div>
+							{/volist}
+						</div>
+					</div>
+				</div>
+			</div>
+
+{include file="common/footer"}
+
+
+		<script src="__INDEX__/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/swiper/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/scroll.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

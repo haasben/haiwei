@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$archives_data.seo_title}</title>
+		<meta name="keywords" content="{$archives_data.seo_keywords}" />
+		<meta name="description" content="{$archives_data.seo_description}"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/css.css"/>
+	</head>
+	<body>
+		{include file="gywm/head"}
+			<div class="container">
+				<div class="row box">
+					<h3>{$cate_data.typename}</h3>
+				</div>
+				<div class="row box box1">
+					<div class="detail">
+						<div class="lt">
+							<h4>{$archives_data.title}</h4>
+							<div class="">
+								{:htmlspecialchars_decode($archives_data.content)}
+							</div>
+						</div>
+						<div class="rg">
+							<img src="{$archives_data.litpic}" title="{$archives_data.title}" alt="{$archives_data.title}">
+						</div>
+					</div>
+				</div>
+			</div>
+		
+{include file="common/footer"}
+		
+		
+		<script src="__INDEX__/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/scroll.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$archives_data.seo_title}</title>
+		<meta name="keywords" content="{$archives_data.seo_keywords}" />
+		<meta name="description" content="{$archives_data.seo_description}"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/css.css"/>
+	</head>
+	<body>
+		{include file="common/head"}
+			<div class="container">
+				<div class="row box">
+					<h3>{$cate_data.typename}</h3>
+				</div>
+				<div class="row box box1">
+					<div class="title_explain">
+						<p class="tt">{$archives_data.title}</p>
+						<p class="env">
+							{:htmlspecialchars_decode($archives_data.content)}
+						</p>
+					</div>
+					<ul class="mea_list">
+						<li style="background-color: rgb(255,255,255);">
+							<a href="javascript:">
+								<img src="__INDEX__img/cs1.png" >
+							</a>
+						</li>
+						<li style="background-color: rgb(255,255,255);">
+							<a href="javascript:">
+								<img src="__INDEX__img/cs2.png" >
+							</a>
+						</li>
+						<li style="background-color: rgb(255,255,255);">
+							<a href="javascript:">
+								<img src="__INDEX__img/cs3.png" >
+							</a>
+						</li>
+						<li style="background-color: rgb(255,255,255);">
+							<a href="javascript:">
+								<img src="__INDEX__img/cs4.png" >
+							</a>
+						</li>
+					</ul>
+					<!-- 管理列表 -->
+					<div class="manage_list">
+						<ul>
+							<li>
+								<img src="__INDEX__img/cs5.png" >
+								<p class="til">清洁生产</p>
+								<div class="inf">
+									<h4>清洁生产</h4>
+									<div>为了将生产过程中所带给环境的影响降低到最小，甚至消除，我们实施清洁生产措施。这些措施包括实施污染源减量、提高资源利用率、减少和消除从生产各个环节的废气、废水排放等。</div>
+								</div>
+							</li>
+							<li>
+								<img src="__INDEX__img/cs6.png" >
+								<p class="til">水资源管理</p>
+								<div class="inf">
+									<h4>水资源管理</h4>
+									<div>为了将生产过程中所带给环境的影响降低到最小，甚至消除，我们实施清洁生产措施。这些措施包括实施污染源减量、提高资源利用率、减少和消除从生产各个环节的废气、废水排放等。</div>
+								</div>
+							</li>
+							<li>
+								<img src="__INDEX__img/cs7.png" >
+								<p class="til">废弃管理</p>
+								<div class="inf">
+									<h4>废弃管理</h4>
+									<div>为了将生产过程中所带给环境的影响降低到最小，甚至消除，我们实施清洁生产措施。这些措施包括实施污染源减量、提高资源利用率、减少和消除从生产各个环节的废气、废水排放等。</div>
+								</div>
+							</li>
+							<li>
+								<img src="__INDEX__img/cs8.png" >
+								<p class="til">废弃物管理</p>
+								<div class="inf">
+									<h4>废弃物管理</h4>
+									<div>为了将生产过程中所带给环境的影响降低到最小，甚至消除，我们实施清洁生产措施。这些措施包括实施污染源减量、提高资源利用率、减少和消除从生产各个环节的废气、废水排放等。</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+{include file="common/footer"}
+			
+			
+		<script src="__INDEX__js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__js/swiper/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__js/scroll.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

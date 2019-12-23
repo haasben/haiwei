@@ -1,0 +1,599 @@
+{include file="head"}
+		<style type="text/css">
+			.swiper-banner{
+				height: 100%;
+			}
+			.swiper-banner .swiper-slide{position: static;}
+			.swiper-container.swiper-product{
+				height: calc(100% - 370px);
+				width: 105.5rem;
+				margin: 0 auto;
+				padding: 0 3.2857rem;
+				box-sizing: content-box;
+			}
+			.swiper-product .swiper-slide{
+				text-align: center;
+			}
+			.swiper-product .swiper-button-next, .swiper-button-prev{
+				top: 13%;
+				width: 3.5rem;
+				height: 6.9285rem;
+				margin-top: 0;
+				background-size: 3.5rem 6.9285rem;
+			}
+
+			.product .swiper-button-next{right: 0;background-image: url(__INDEX__/img/next.png);}
+			.product .swiper-button-prev{left: 0;background-image: url(__INDEX__/img/prev.png);}
+			.product .swiper-pagination-bullet{width: 2.5714rem;height: 0.2142rem;border-radius: 0;background: rgb(255,255,255);opacity: 0.7; border: 1px solid #fff;}
+			.product .swiper-pagination-bullet.swiper-pagination-bullet-active{background: #007AFF;}
+			
+			  /*包裹自定义分页器的div的位置等CSS样式*/ 
+			.swiper-pagination-custom { 
+				bottom: 10px; 
+				left: 0; 
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			} 
+			/*自定义分页器的样式，这个你自己想要什么样子自己写*/ 
+			.swiper-pagination-customs { 
+				width: 10px; 
+				height: 10px; 
+				display: inline-block; 
+				background: #f6ff00; 
+				margin: 0 5px; 
+				border-radius: 50%;
+				border: 3px solid #fff;
+			} 
+			/*自定义分页器激活时的样式表现*/ 
+			.swiper-pagination-customs-active { 
+				width: 25px;
+				height: 25px;
+				background: url(__INDEX__/img/banner_active.png) no-repeat center;
+				background-size: contain;
+				border-radius: 0;
+				border: 0;
+			}
+			.line{height: 10px;display: inline-block;line-height: 1px;color: #ebf400;}
+			body::-webkit-scrollbar{display: none;}
+		</style>
+
+
+			<!-- 轮播 -->
+			<div class="section section_banner">
+				<div class="banner">
+					<div class="swiper-container swiper-banner">
+						<div class="swiper-wrapper">
+						{volist name="$banner" id="b"}
+							<div class="swiper-slide">
+								<img src="{$b.litpic}" title="{$b.title}">
+							</div>
+						{/volist}
+				
+						</div>
+						<div class="swiper-pagination baner-pagination"></div>
+					</div>
+				</div>
+			</div>
+			<!-- 工艺技术 -->
+			<div class="section section_technology">
+				<div class="technology">
+					<h3>{$gyjs_data.title}</h3>
+					<div class="wrap">
+						<div class="intro">
+							<div class="left">
+								<span>{:mb_substr(strip_tags(htmlspecialchars_decode($gyjs_data.content)),0,80)}......</span>
+								{if condition="$lang == en"}
+								<a href="/jszc?id={$gyjs_data.typeid}">more</a>
+								{else}
+								<a href="/jszc?id={$gyjs_data.typeid}">查看更多</a>
+								{/if}
+							</div>
+							<div class="right">
+								<video width="820" height="" controls="controls" poster="{$gyjs_data.litpic}">
+									<source src="{$gyjs_data.file_url}" type="video/mp4"></source>
+								</video>
+							</div>
+						</div>
+						<div class="list">
+							<ul>
+								{volist name="$gyjs_data.child" id="gc"}
+								<li>
+									<img src="{$gc.litpic}" >
+									<p class="title">{$gc.typename}</p>
+									<p class="cont">{:mb_substr(strip_tags(htmlspecialchars_decode($gc.content)),0,35)}...</p>
+									{if condition="$lang == en"}
+									<a href="/jszc_info?id={$gc.id}">more</a>
+									{else}
+								<a href="/jszc_info?id={$gc.id}">查看更多</a>
+				
+									{/if}
+								</li>
+								{/volist}
+								
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="section section_product">
+				<div class="product">
+					<h3>{$cpzx_data.typename}</h3>
+					<p class="title">{$cpzx_data.seo_title}</p>
+					<div class="swiper-container swiper-product">
+						<div class="swiper-wrapper">
+							{volist name="$cpzx_data.child" id="v"}
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="{$v.litpic}" ></dt>
+									<dd class="tit">{$v.title}</dd>
+									<dd class="cent">{:mb_substr(strip_tags(htmlspecialchars_decode($v.content)),0,35)}......</dd>
+								</dl>
+							</div>
+							{/volist}
+							
+						</div>
+						<!-- 如果需要分页器 -->
+						<div class="swiper-pagination"></div>
+						
+						<!-- 如果需要导航按钮 -->
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</div>
+					<div class="swiper-container swiper-product2">
+						<div class="swiper-wrapper">
+							{volist name="$cpzx_data.child" id="v"}
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="{$v.litpic}" ></dt>
+									<dd class="tit">{$v.title}</dd>
+									<dd class="cent">{:mb_substr(strip_tags(htmlspecialchars_decode($v.content)),0,35)}......</dd>
+								</dl>
+							</div>
+							{/volist}
+						</div>
+						<!-- 如果需要分页器 -->
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="section section_news">
+				<!-- 新闻动态 -->
+				<div class="news">
+					<h3>{$news.typename}</h3>
+					<div class="wrap">
+
+						<div class="left">
+							<img src="__INDEX__/img/news6.png" class="yin">
+							<div class="pic">
+								<img src="{$first_new.litpic}" >
+							</div>
+						</div>
+
+						<div class="right">
+							
+							<div class="top_wrap">
+								<div class="time">{:date('Y.m.d',$first_new.add_time)}</div>
+								<h4>{$first_new.title}</h4>
+								<p>{:mb_substr(strip_tags(htmlspecialchars_decode($first_new.content)),0,20)}</p>
+							</div>
+							
+							<ul>
+								{volist name="$news['child']" id="v" offset="1" length='3'}
+								<li>
+									<a href="#">
+										<span>{:date('Y.m.d',$v.add_time)}</span>
+										<img src="{$v.litpic}" >
+										<p>
+											{$v.title}
+										</p>
+									</a>
+								</li>
+								{/volist}
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="section section_about">
+				<div class="about">
+					<div class="left">
+						<h3>{$gyhwhx.content.title}</h3>
+						<div>
+				           {:strip_tags(htmlspecialchars_decode($gyhwhx.content.content))}
+				        </div>
+					</div>
+					<div class="right">
+						<img src="{$gyhwhx.content.litpic}" >
+					</div>
+				</div>
+			</div>
+			<div class="section section_contact">
+				<!-- 联系我们 -->
+				<div class="contact">
+					<div class="left">
+						<div id="map"></div>
+					</div>
+					<div class="right">
+
+						<h3>{if condition="$lang == en"}contact us{else}联系我们{/if}</h3>
+						<dl>
+							<dt><img src="__INDEX__/img/icon1.png" ></dt>
+							<dd>{$web_config.web_attr_1}</dd>
+						</dl>
+						<dl>
+							<dt><img src="__INDEX__/img/icon2.png" ></dt>
+							<dd>{$web_config.web_attr_17}</dd>
+						</dl>
+						<dl>
+							<dt><img src="__INDEX__/img/icon3.png" ></dt>
+							<dd>{$web_config.web_basehost}</dd>
+						</dl>
+						<dl>
+							<dt><img src="__INDEX__/img/icon4.png" ></dt>
+							<dd>{$web_config.web_attr_18}</dd>
+						</dl>
+					</div>
+				</div>
+				<!-- 底部 -->
+				{include file="footer"}
+			</div>
+			
+			
+			<!-- 内容区 -->
+			<!-- <div class="container">
+			
+			</div> -->
+		</main>
+		
+		
+		<div class="mobile">
+			<!-- 菜单 -->
+			{include file="mobile_head"}
+			<!-- 轮播 -->
+			<div class="banner">
+				<div class="swiper-container swiper-banner">
+					<div class="swiper-wrapper">
+						{volist name="$banner" id="b"}
+							<div class="swiper-slide">
+								<img src="{$b.litpic}" title="{$b.title}">
+							</div>
+						{/volist}
+					</div>
+					<!-- 如果需要分页器 -->
+					<div class="swiper-pagination baner-pagination"></div>
+				</div>
+				
+			</div>
+			
+			<!-- 内容区 -->
+			<div class="container">
+				<!-- 工艺技术 -->
+				<div class="technology">
+					<h3>{$gyjs_data.title}</h3>
+					<div class="intro">
+						<div class="left">
+							<span>{:mb_substr(strip_tags(htmlspecialchars_decode($gyjs_data.content)),0,80)}......</span>
+							{if condition="$lang == en"}
+								<a href="/jszc?id={$gyjs_data.typeid}">more</a>
+								{else}
+								<a href="/jszc?id={$gyjs_data.typeid}">查看更多</a>
+								{/if}
+						</div>
+						<div class="right">
+							<video width="820" height="469" controls="controls" poster="{$gyjs_data.litpic}">
+								<source src="{$gyjs_data.file_url}" type="video/mp4"></source>
+							</video>
+						</div>
+					</div>
+					<div class="list">
+						<ul>
+							{volist name="$gyjs_data.child" id="gc"}
+							<li>
+								<img src="{$gc.litpic}" >
+								<p class="title">{$gc.typename}</p>
+								<p class="cont">{:mb_substr(strip_tags(htmlspecialchars_decode($gc.content)),0,35)}...</p>
+								{if condition="$lang == en"}
+								<a href="/jszc_info?id={$gc.id}">more</a>
+								{else}
+								<a href="/jszc_info?id={$gc.id}">查看更多</a>
+								{/if}
+							</li>
+							{/volist}
+						</ul>
+					</div>
+				</div>
+				
+				<!-- 产品中心 -->
+				<div class="product">
+					<h3>{$cpzx_data.typename}</h3>
+					<p class="title">{$cpzx_data.seo_title}</p>
+					<div class="swiper-container swiper-product">
+						<div class="swiper-wrapper">
+							{volist name="$cpzx_data.child" id="v"}
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="{$v.litpic}" ></dt>
+									<dd class="tit">{$v.title}</dd>
+									<dd class="cent">{:mb_substr(strip_tags(htmlspecialchars_decode($v.content)),0,35)}......</dd>
+								</dl>
+							</div>
+							{/volist}
+						</div>
+						<!-- 如果需要分页器 -->
+						<div class="swiper-pagination"></div>
+						
+						<!-- 如果需要导航按钮 -->
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</div>
+					<div class="swiper-container swiper-product2">
+						<div class="swiper-wrapper">
+							{volist name="$cpzx_data.child" id="v"}
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="{$v.litpic}" ></dt>
+									<dd class="tit">{$v.title}</dd>
+									<dd class="cent">{:mb_substr(strip_tags(htmlspecialchars_decode($v.content)),0,35)}......</dd>
+								</dl>
+							</div>
+							{/volist}
+						</div>
+						<!-- 如果需要分页器 -->
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+				
+				
+				<!-- 新闻动态 -->
+				<div class="news">
+					<h3>{$news.typename}</h3>
+					<div class="wrap">
+						<div class="left">
+							<img src="__INDEX__/img/news6.png" class="yin">
+							<div class="pic">
+								<img src="{$first_new.litpic}" >
+							</div>
+						</div>
+						<div class="right">
+							<div class="top_wrap">
+								<div class="time">{:date('Y.m.d',$first_new.add_time)}</div>
+								<h4>{$first_new.title}</h4>
+								<p>{:mb_substr(strip_tags(htmlspecialchars_decode($first_new.content)),0,20)}......</p>
+							</div>
+							
+							<ul>
+								{volist name="$news['child']" id="v" offset="1" length='3'}
+								<li>
+									<a href="#">
+										<span>{:date('Y.m.d',$v.add_time)}</span>
+										<img src="{$v.litpic}" >
+										<p>
+											{$v.title}
+										</p>
+									</a>
+								</li>
+								{/volist}
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+				<!-- 关于华芯 -->
+
+				<div class="about">
+					<div class="left">
+						<h3>{$gyhwhx.content.title}</h3>
+						<div>
+				           {:strip_tags(htmlspecialchars_decode($gyhwhx.content.content))}
+				        </div>
+					</div>
+					<div class="right">
+						<img src="{$gyhwhx.content.litpic}" >
+					</div>
+				</div>
+				
+				<!-- 联系我们 -->
+				<div class="contact">
+					<div class="left">
+						<div id="mobile_map"></div>
+						<!-- <div class="zooms"></div> -->
+					</div>
+					<div class="right">
+
+						<h3>{if condition="$lang == en"}contact us{else}联系我们{/if}</h3>
+						<dl>
+							<dt><img src="__INDEX__/img/icon1.png" ></dt>
+							<dd>{$web_config.web_attr_1}</dd>
+						</dl>
+						<dl>
+							<dt><img src="__INDEX__/img/icon2.png" ></dt>
+							<dd>{$web_config.web_attr_17}</dd>
+						</dl>
+						<dl>
+							<dt><img src="__INDEX__/img/icon3.png" ></dt>
+							<dd>{$web_config.web_basehost}</dd>
+						</dl>
+						<dl>
+							<dt><img src="__INDEX__/img/icon4.png" ></dt>
+							<dd>{$web_config.web_attr_18}</dd>
+						</dl>
+					</div>
+				</div>
+				
+				<!-- 底部 -->
+				{include file="footer"}
+			</div>
+		</div>
+		
+		<script src="__INDEX__/js/jquery.fullPage.js" type="text/javascript" charset="utf-8"></script>
+<!-- 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+		<script src="__INDEX__/js/swiper/js/swiper.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=QjzOrQyA4SBF0R14jfMFlPS2ZvIB89uz"></script>
+
+		
+		<script src="__INDEX__/js/index.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 地图
+			var map = new BMap.Map("map");            // 创建Map实例
+			var point = new BMap.Point(104.007501,30.464329);  
+			var marker = new BMap.Marker(point);  // 创建标注
+			map.addOverlay(marker);
+			map.centerAndZoom(point,12);               
+			map.enableScrollWheelZoom();
+			map.disableScrollWheelZoom();
+			var opts = "{$web_config.web_name}" ;
+			var infoWindow = new BMap.InfoWindow(opts);  // 创建信息窗口对象 
+			map.openInfoWindow(infoWindow,point);
+			
+			// 手机端地图
+			var mobile_map = new BMap.Map("mobile_map");            // 创建Map实例
+			var mobile_point = new BMap.Point(104.007501,30.464329);  
+			var mobile_marker = new BMap.Marker(mobile_point);  // 创建标注
+			mobile_map.addOverlay(mobile_marker);
+			mobile_map.centerAndZoom(mobile_point,12);               
+			mobile_map.enableScrollWheelZoom();
+			mobile_map.disableScrollWheelZoom();
+			var mobile_opts = "{$web_config.web_name}" ;
+			var mobile_infoWindow = new BMap.InfoWindow(mobile_opts);  // 创建信息窗口对象 
+			mobile_map.openInfoWindow(mobile_infoWindow,mobile_point);
+			
+			
+			// 轮播图
+			var mySwiper = new Swiper ('.swiper-banner', {
+				direction: 'horizontal', // 垂直切换选项
+				loop: true, // 循环模式选项
+				autoplay:true,
+				
+				// 如果需要分页器
+				pagination: {
+					el: '.baner-pagination',
+					type: 'custom',
+					clickableClass: 'swiper-pagination-customs',
+					renderCustom: function(swiper, current, total){
+						var customPaginationHtml = "";
+						for(var i = 0; i < total; i++) { 
+							 //判断哪个分页器此刻应该被激活 
+							if(i == (current - 1) && i < (total - 1)) { 
+								customPaginationHtml += '<span class="swiper-pagination-customs swiper-pagination-customs-active"></span><span class="line">...............</span>'; 
+							}else if(i == (current - 1) && i == (total -1)){
+								customPaginationHtml += '<span class="swiper-pagination-customs swiper-pagination-customs-active"></span>'; 
+							}
+							else { 
+								if(i == (total -1)){
+									customPaginationHtml += '<span class="swiper-pagination-customs"></span>'; 
+								}else{
+									customPaginationHtml += '<span class="swiper-pagination-customs"></span><span class="line">...............</span>'; 
+								}
+							} 
+						} 
+						return customPaginationHtml;
+					}
+				}, 
+			})
+			
+			var mySwiperProduct = new Swiper ('.swiper-product', {
+				direction: 'horizontal', // 垂直切换选项
+				loop: true, // 循环模式选项
+				autoplay:true,
+				slidesPerView: 3,
+				spaceBetween: 30,
+				
+				// 如果需要分页器
+				pagination: {
+				  el: '.swiper-pagination',
+				},
+				
+				// 如果需要前进后退按钮
+				navigation: {
+				  nextEl: '.swiper-button-next',
+				  prevEl: '.swiper-button-prev',
+				},
+			})
+			var mySwiperProduct2 = new Swiper ('.swiper-product2', {
+				direction: 'horizontal', // 垂直切换选项
+				loop: true, // 循环模式选项
+				autoplay:true,
+				
+				// 如果需要分页器
+				pagination: {
+				  el: '.swiper-pagination',
+				},
+				
+				// 如果需要前进后退按钮
+				// navigation: {
+				//   nextEl: '.swiper-button-next',
+				//   prevEl: '.swiper-button-prev',
+				// },
+			})
+			
+		</script>
+		<script type="text/javascript">
+			$(function(){
+				$('#fullpage').fullpage({
+					afterLoad:function(anchorLink,index){
+						if(index == 4){
+							$('.section_news .wrap .right .time').css({
+								animation: 'bounceInRight 1s forwards cubic-bezier(0.215, 0.610, 0.355, 1.000)'
+							})
+							$('.section_news .wrap .right h4').css({
+								animation: 'bounceInRight 1s forwards cubic-bezier(0.215, 0.610, 0.355, 1.000)'
+							})
+							$('.section_news .wrap .right p').css({
+								animation: 'bounceInRight 2s forwards cubic-bezier(0.215, 0.610, 0.355, 1.000)'
+							})
+							$('.section_news .right ul').css({
+								transform: 'translateY(0)'
+							})
+						}else if(index == 2){
+							$('.section_technology h3').css({
+								animation: 'bounceInLeft 1s forwards cubic-bezier(0.215, 0.610, 0.355, 1.000)'
+							})
+							$('.section_technology .intro .left span').css({
+								animation: 'bounceInLeft 2s forwards cubic-bezier(0.215, 0.610, 0.355, 1.000)'
+							})
+							$('.section_technology .intro .left a').css({
+								animation: 'bounceInLeft 2.5s forwards cubic-bezier(0.215, 0.610, 0.355, 1.000)'
+							})
+							$('.section_technology .intro .right').css({
+								animation: 'bounceInRight 2.5s forwards cubic-bezier(0.215, 0.610, 0.355, 1.000)'
+							})
+							$('.section_technology .list').css({
+								transform: 'translateY(0)'
+								// animation: 'bounceInRight 2.5s forwards cubic-bezier(0.215, 0.610, 0.355, 1.000)'
+							})
+						}else{
+							$('.news .right ul').css({
+								transform: 'translateY(600px)'
+							})
+						}
+					}
+				});
+				
+				
+				$(window).resize(function(){
+					autoScrolling();
+				});
+
+				function autoScrolling(){
+					var ww = $(window).width();
+					if(ww < 1025){
+						$('.mobile').css({display:'block'});
+						$('.main').css({display:'none'});
+					} else {
+						$('.main').css({display:'block'});
+						$('.mobile').css({display:'none'});
+					}
+				}
+
+				autoScrolling();
+			});
+			
+		</script>
+	</body>
+</html>

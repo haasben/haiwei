@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$cate_data.seo_title}</title>
+		<meta name="keywords" content="{$cate_data.seo_keywords}" />
+		<meta name="description" content="{$cate_data.seo_description}"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/js/swiper/css/swiper.min.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/public_media.css"/>
+
+	</head>
+	<body>
+		{include file="gywm/head"}
+			<div class="container">
+				<div class="row box">
+					<h3>{$cate_data.typename}</h3>
+				</div>
+				<div class="row box box1">
+					<div class="col-md-5 desc">
+						<div class="">
+							{:htmlspecialchars_decode($cate_data.child.content)}
+						</div>
+					</div>
+					<div class="col-md-7 pic">
+						<img src="{$cate_data.child.litpic}" >
+					</div>
+				</div>
+			</div>
+
+<style type="text/css">
+	.swiper-container{margin-bottom:40px;}
+	.swiper-slide{width: auto;height: 100%;text-align: center;}
+	.swiper-slide img{width: 100%;height: 100%;}
+	.swiper-button-next, .swiper-button-prev{
+		width: 41px;
+		height: 41px;
+		border-radius: 50%;
+		background-color: #2183F2;
+		background-size: 50% 50%;
+		margin-top: -22px;
+	}
+	.swiper-button-prev{left: 26%;}
+	.swiper-button-next{right: 26%;}
+	.swiper-slide dl{}
+	.swiper-slide dt{max-height: 36.5714rem; overflow: hidden;position: relative;margin-bottom: 1.3571rem;}
+	.yin{position: absolute;width: 100%;height: 100%;top: 0;left: 0;background-color: rgba(17,17,17,.36);}
+	.swiper-slide dd{text-align: center;color: #070707;font-size: 16px;}
+</style>
+
+			<div class="container swipers">
+				<div class="row">
+					<h3>{if condition="$lang == 'en'"}Company environment{else}公司环境{/if}</h3>
+				</div>
+				<div class="row">
+					<div class="swiper-container pc_swiper">
+						<div class="swiper-wrapper">
+							{volist name="$cate_data.child.img" id="v"}
+							<div class="swiper-slide">
+								<a href="javascript:;">
+									<dl>
+										<dt><img src="{$v.image_url}" /><div class=""></div></dt>
+										<dd>{$v.intro}</dd>
+									</dl>
+								</a>
+							</div>
+							{/volist} 
+						</div>
+						<!-- 如果需要导航按钮 -->
+						<div class="swiper-button-prev swiper-button-white"></div>
+						<div class="swiper-button-next swiper-button-white"></div>
+					</div>
+					
+					<div class="swiper-container mobile_swiper">
+						<div class="swiper-wrapper">
+							{volist name="$cate_data.child.img" id="v"}
+							<div class="swiper-slide">
+								<a href="javascript:;">
+									<dl>
+										<dt><img src="{$v.image_url}" /><div class=""></div></dt>
+										<dd>{$v.intro}</dd>
+									</dl>
+								</a>
+							</div>
+							{/volist} 
+						</div>
+						<!-- 如果需要分页器 -->
+						<!-- <div class="swiper-pagination"></div> -->
+						<!-- 如果需要导航按钮 -->
+						<div class="swiper-button-prev swiper-button-white"></div>
+						<div class="swiper-button-next swiper-button-white"></div>
+					</div>
+
+				</div>
+			</div>
+		
+		{include file="common/footer"}
+		
+		
+		<script src="__INDEX__/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/swiper/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/menu_head.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var mySwiper = new Swiper('.swiper-container.pc_swiper', {
+				loop: true,
+				centeredSlides: true,
+				slidesPerView: 'auto',
+				// loopedSlides: 3,
+				// slidesPerView: 3,
+				spaceBetween: 11,
+				lazy: {
+					loadPrevNext: true,
+					loadPrevNextAmount: 3,
+				},
+				pagination: {
+					el: '.swiper-pagination',
+					clickable: true,
+				},
+
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+				},
+				on:{
+					slideChangeTransitionEnd:function(){
+						let that = this;
+						let slides = that.slides;
+						slides.each(function(index){
+							if(that.activeIndex == index){
+								$(this).find('dt div').removeClass('yin');
+								$(this).siblings().find('dt div').addClass('yin');
+							}
+						})
+					}
+				}
+			})
+			
+			var myMobileSwiper = new Swiper('.swiper-container.mobile_swiper', {
+				loop: true,
+			
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+				},
+			})
+		</script>
+	</body>
+</html>

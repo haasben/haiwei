@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$cate_data.seo_title}</title>
+		<meta name="keywords" content="{$cate_data.seo_keywords}" />
+		<meta name="description" content="{$cate_data.seo_description}"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/css.css"/>
+	</head>
+	<body>
+		{include file="gywm/head"}
+			<div class="container">
+				<div class="row box">
+					<h3>{$cate_data.typename}</h3>
+				</div>
+				<div class="row box box1">
+					<div class="mile_wrap">
+						<div class="left">
+							<img src="{$cate_data.child.boby_picture}" >
+						</div>
+						<ul class="event_list">
+						{volist name="$lcb_data" id="v"}
+							<li>
+								<div class="">
+									<h4>{$key}{if condition="$lang!='en'"}年{/if}</h4>
+									{volist name="$lcb_data[$key]" id="v1"}
+									<p><span>{$v1.title}</span></p>
+									{/volist}
+
+								</div>
+							</li>
+						{/volist}
+						
+						</ul>
+					</div>
+				</div>
+			</div>
+		
+{include file="common/footer"}
+		
+		
+		<script src="__INDEX__/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/swiper/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/scroll.js" type="text/javascript" charset="utf-8"></script>
+
+	</body>
+</html>
