@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:52:"D:\WWW\haiwei/application/index\view\jszc\index.html";i:1576832243;s:51:"D:\WWW\haiwei\application\index\view\jszc\head.html";i:1576830886;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577080804;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:51:"D:\WWW\haiwei/application/index\view\gywm\zlcg.html";i:1576737831;s:51:"D:\WWW\haiwei\application\index\view\gywm\head.html";i:1576825776;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1576658590;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,12 +7,11 @@
 		<title><?php echo $cate_data['seo_title']; ?></title>
 		<meta name="keywords" content="<?php echo $cate_data['seo_keywords']; ?>" />
 		<meta name="description" content="<?php echo $cate_data['seo_description']; ?>"/>
-		<link rel="stylesheet" type="text/css" href="/public/static/index/css/bootstrap.min.css"/>
-		<link rel="stylesheet" type="text/css" href="/public/static/index/css/css.css"/>
-		<link rel="stylesheet" type="text/css" href="/public/static/index/css/technology.css"/>
+		<link rel="stylesheet" type="text/css" href="/public/static/index/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="/public/static/index/css/css.css" />
 	</head>
 	<body>
-
+		
 	<div class="left_nav">
 		<img src="/public/static/index/img/logo.png" class="logo">
 		<div class="menu">
@@ -56,7 +55,7 @@
 			<img src="<?php echo $cate_data['litpic']; ?>" >
 			<ul class="company_menu">
 				<?php if(is_array($cates) || $cates instanceof \think\Collection || $cates instanceof \think\Paginator): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
-				<li><a href="/jszc_info?id=<?php echo $v['id']; ?>"><?php echo $v['typename']; ?></a></li>
+				<li><a href="<?php echo $v['dirpath']; ?>?id=<?php echo $v['id']; ?>"><?php echo $v['typename']; ?></a></li>
 				<?php endforeach; endif; else: echo "" ;endif; ?>
 			</ul>
 		</div>
@@ -65,32 +64,35 @@
 					<h3><?php echo $cate_data['typename']; ?></h3>
 				</div>
 				<div class="row box box1">
-					<div class="techno_wrap">
-						<div class="info">
-							<?php echo htmlspecialchars_decode($content['content']); ?>
-						</div>
-						<ul class="list">
-							<?php if(is_array($cates) || $cates instanceof \think\Collection || $cates instanceof \think\Paginator): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
-							<li>
-								<a href="/jszc_info?id=<?php echo $v['id']; ?>">
-									<img src="<?php echo $v['litpic']; ?>" >
-									<p><?php echo $v['typename']; ?></p>
-								</a>
-							</li>
-							<?php endforeach; endif; else: echo "" ;endif; if(is_array($banner) || $banner instanceof \think\Collection || $banner instanceof \think\Paginator): $i = 0; $__LIST__ = $banner;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
-							<li>
-								<a href="<?php echo $v['links']; ?>">
-									<img src="<?php echo $v['litpic']; ?>" title="<?php echo $v['title']; ?>" >
-								</a>
-							</li>
-							<?php endforeach; endif; else: echo "" ;endif; ?>
-						</ul>
+					<div class="title_explain">
+
+							<?php echo htmlspecialchars_decode($cate_data['child']['content']); ?>
+						<!-- <p class="env">
+							海威华芯拥有多项GaAs自主知识产权<br>
+							经过多年的技术研发、积累，已形成多项发明专利、实用新型专利、外观专利。
+						</p> -->
 					</div>
-					
+					<!-- 专利列表 -->
+					<div class="zl_list">
+						<div class="img_list">
+							<?php if(is_array($zlcg_data) || $zlcg_data instanceof \think\Collection || $zlcg_data instanceof \think\Paginator): $i = 0; $__LIST__ = $zlcg_data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
+							<img src="<?php echo $v['litpic']; ?>" >
+							<?php endforeach; endif; else: echo "" ;endif; ?>
+						</div>
+						<div class="msg_list">
+							<?php if(is_array($zlcg_data) || $zlcg_data instanceof \think\Collection || $zlcg_data instanceof \think\Paginator): $i = 0; $__LIST__ = $zlcg_data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
+							<div class="item">
+								<span><?php echo $v['title']; ?></span>
+								<p><?php echo strip_tags(htmlspecialchars_decode($v['content'])); ?></p>
+								<hr >
+							</div>
+							<?php endforeach; endif; else: echo "" ;endif; ?>
+						</div>
+					</div>
 				</div>
 			</div>
-		
-			<div class="container">
+
+<div class="container">
 	<footer>
 		<div class="wrap">
 			<div class="left">
@@ -116,10 +118,11 @@
 </main>
 		
 
-		
-		
+
+
 		<script src="/public/static/index/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/public/static/index/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/public/static/index/js/swiper/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/public/static/index/js/scroll.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>

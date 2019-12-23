@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:56:"D:\WWW\haiwei/application/index\view\jszc\jszc_info.html";i:1576832991;s:51:"D:\WWW\haiwei\application\index\view\jszc\head.html";i:1576830886;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1576658590;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:56:"D:\WWW\haiwei/application/index\view\jszc\jszc_info.html";i:1576832991;s:51:"D:\WWW\haiwei\application\index\view\jszc\head.html";i:1576830886;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577080804;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>

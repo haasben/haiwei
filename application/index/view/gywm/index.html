@@ -6,7 +6,7 @@
 						<div class="about_info">
 							<h3>{$first_array.typename}</h3>
 							<div class="cont">
-						   	{:htmlspecialchars_decode($first_array.child.content)}
+						   	{:mb_substr(strip_tags(htmlspecialchars_decode($first_array.child.content)),0,300)}
 							</div>
 							<a href="{$first_array.dirpath}?id={$first_array.id}" class="more"><img src="__INDEX__/img/more.png" ></a>
 						</div>

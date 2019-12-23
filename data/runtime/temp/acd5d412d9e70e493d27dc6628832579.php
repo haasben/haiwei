@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:52:"D:\WWW\haiwei/application/index\view\gywm\index.html";i:1576640249;s:53:"D:\WWW\haiwei\application\index\view\common\head.html";i:1576654098;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1576658590;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:52:"D:\WWW\haiwei/application/index\view\gywm\index.html";i:1577073563;s:53:"D:\WWW\haiwei\application\index\view\common\head.html";i:1576654098;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577080804;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -73,7 +73,7 @@
 						<div class="about_info">
 							<h3><?php echo $first_array['typename']; ?></h3>
 							<div class="cont">
-						   	<?php echo htmlspecialchars_decode($first_array['child']['content']); ?>
+						   	<?php echo mb_substr(strip_tags(htmlspecialchars_decode($first_array['child']['content'])),0,300); ?>
 							</div>
 							<a href="<?php echo $first_array['dirpath']; ?>?id=<?php echo $first_array['id']; ?>" class="more"><img src="/public/static/index/img/more.png" ></a>
 						</div>

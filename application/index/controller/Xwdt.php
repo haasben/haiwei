@@ -27,7 +27,6 @@ class Xwdt extends Cates
 
     	$next_cate = $this->cate_model->get_child_arctype($id);
     	
-
     	$new_arr =  array();
 		$parent_id = $next_cate[0]['id'];
 		$cate_data = $this->cate_model->get_cate($parent_id);
@@ -135,9 +134,6 @@ class Xwdt extends Cates
     	$this->assign('new_info',$new_info);
 
     	return $this->fetch();
-
-
-
     }
 
 

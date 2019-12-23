@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:52:"D:\WWW\haiwei/application/index\view\jszc\index.html";i:1576832243;s:51:"D:\WWW\haiwei\application\index\view\jszc\head.html";i:1576830886;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577080804;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:56:"D:\WWW\haiwei/application/index\view\cpzx\cpzx_list.html";i:1576830763;s:51:"D:\WWW\haiwei\application\index\view\cpzx\head.html";i:1576827266;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577080804;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,7 +9,7 @@
 		<meta name="description" content="<?php echo $cate_data['seo_description']; ?>"/>
 		<link rel="stylesheet" type="text/css" href="/public/static/index/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="/public/static/index/css/css.css"/>
-		<link rel="stylesheet" type="text/css" href="/public/static/index/css/technology.css"/>
+		<link rel="stylesheet" type="text/css" href="/public/static/index/css/product.css"/>
 	</head>
 	<body>
 
@@ -56,37 +56,31 @@
 			<img src="<?php echo $cate_data['litpic']; ?>" >
 			<ul class="company_menu">
 				<?php if(is_array($cates) || $cates instanceof \think\Collection || $cates instanceof \think\Paginator): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
-				<li><a href="/jszc_info?id=<?php echo $v['id']; ?>"><?php echo $v['typename']; ?></a></li>
+				<li><a href="/cpzx_list?id=<?php echo $v['id']; ?>"><?php echo $v['typename']; ?></a></li>
 				<?php endforeach; endif; else: echo "" ;endif; ?>
 			</ul>
 		</div>
 			<div class="container">
 				<div class="row box">
-					<h3><?php echo $cate_data['typename']; ?></h3>
+					<h3><?php echo $top_cate['typename']; ?></h3>
 				</div>
 				<div class="row box box1">
-					<div class="techno_wrap">
-						<div class="info">
-							<?php echo htmlspecialchars_decode($content['content']); ?>
+					<div class="prod_wrap">
+						<div class="lists">
+							<h3><?php echo $cate_data['typename']; ?></h3>
+							<ul>
+								<?php if(is_array($cate_data['child']) || $cate_data['child'] instanceof \think\Collection || $cate_data['child'] instanceof \think\Paginator): $i = 0; $__LIST__ = $cate_data['child'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
+								<li>
+									<a href="/cpzx_info?aid=<?php echo $v['aid']; ?>&id=<?php echo $cate_data['id']; ?>">
+										<div class="" style="background-image: url(<?php echo $v['litpic']; ?>);" ></div>
+										<img src="<?php echo $v['litpic']; ?>" >
+										<p><?php echo $v['title']; ?></p>
+									</a>
+								</li>
+								<?php endforeach; endif; else: echo "" ;endif; ?>
+							</ul>
 						</div>
-						<ul class="list">
-							<?php if(is_array($cates) || $cates instanceof \think\Collection || $cates instanceof \think\Paginator): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
-							<li>
-								<a href="/jszc_info?id=<?php echo $v['id']; ?>">
-									<img src="<?php echo $v['litpic']; ?>" >
-									<p><?php echo $v['typename']; ?></p>
-								</a>
-							</li>
-							<?php endforeach; endif; else: echo "" ;endif; if(is_array($banner) || $banner instanceof \think\Collection || $banner instanceof \think\Paginator): $i = 0; $__LIST__ = $banner;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
-							<li>
-								<a href="<?php echo $v['links']; ?>">
-									<img src="<?php echo $v['litpic']; ?>" title="<?php echo $v['title']; ?>" >
-								</a>
-							</li>
-							<?php endforeach; endif; else: echo "" ;endif; ?>
-						</ul>
 					</div>
-					
 				</div>
 			</div>
 		

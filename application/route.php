@@ -30,15 +30,20 @@ $routes = array(
      //企业文化
      'qywh'=>'index/qywh/index',
 
-
      //技术支持
      'jszc'=>'index/jszc/index',
      'jszc_info'=>'index/jszc/jszc_info',
+     'jszc/hbt'=>'index/jszc/jszc_info',
+     'jszc/gan'=>'index/jszc/jszc_info',
+     'jszc/gaas'=>'index/jszc/jszc_info',
 
      //产品中心
      'cpzx'=>'index/cpzx/index',
      'cpzx_list'=>'index/cpzx/cpzx_list',
      'cpzx_info'=>'index/cpzx/cpzx_info',
+     'cpzx/hbtgy'=>'index/cpzx/cpzx_list',
+     'cpzx/gaasgy'=>'index/cpzx/cpzx_list',
+     'cpzx/gangy'=>'index/cpzx/cpzx_list',
 
 
      //新闻动态
@@ -47,6 +52,9 @@ $routes = array(
      'xwdt/hyzx'=>'index/xwdt/hyzx',
      'xwdt/mtbd'=>'index/xwdt/hyzx',
      'news_info'=>'index/xwdt/news_info',
+
+     //资料下载
+     'zlxz'=>'index/zlxz/index',
 );
 
 $route = array(

@@ -347,5 +347,27 @@ class Archives extends Model
 
 	}
 
+	//获取资料下载页面的数据，默认全部展示
+	public function get_zlxz_list($id){
+		$data = self::field('aid,title,litpic,typeid')
+            ->where('typeid',$id)
+            ->where('status',1)
+            ->where('is_del',0)
+            ->order('sort_order')
+            ->select();
+        return $data;
+
+	}
+	//获取资料下载url
+	public function get_zlxz_url($aid){
+		$data = Db::name('download_file')
+			->where('aid',$aid)
+			->order('sort_order')
+			->limit(1)
+			->value('file_url');
+
+        return $data;
+	}
+
 
 }

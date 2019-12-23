@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:52:"D:\WWW\haiwei/application/index\view\jszc\index.html";i:1576832243;s:51:"D:\WWW\haiwei\application\index\view\jszc\head.html";i:1576830886;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577080804;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:52:"D:\WWW\haiwei/application/index\view\zlxz\index.html";i:1577073307;s:51:"D:\WWW\haiwei\application\index\view\cpzx\head.html";i:1576827266;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577080804;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -56,7 +56,7 @@
 			<img src="<?php echo $cate_data['litpic']; ?>" >
 			<ul class="company_menu">
 				<?php if(is_array($cates) || $cates instanceof \think\Collection || $cates instanceof \think\Paginator): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
-				<li><a href="/jszc_info?id=<?php echo $v['id']; ?>"><?php echo $v['typename']; ?></a></li>
+				<li><a href="/cpzx_list?id=<?php echo $v['id']; ?>"><?php echo $v['typename']; ?></a></li>
 				<?php endforeach; endif; else: echo "" ;endif; ?>
 			</ul>
 		</div>
@@ -65,32 +65,26 @@
 					<h3><?php echo $cate_data['typename']; ?></h3>
 				</div>
 				<div class="row box box1">
-					<div class="techno_wrap">
-						<div class="info">
-							<?php echo htmlspecialchars_decode($content['content']); ?>
-						</div>
-						<ul class="list">
-							<?php if(is_array($cates) || $cates instanceof \think\Collection || $cates instanceof \think\Paginator): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
+					<div class="download_wrap">
+						<p><?php echo $cate_data['seo_description']; ?></p>
+						<ul class="download_list">
+							<?php if(is_array($zlxz_data) || $zlxz_data instanceof \think\Collection || $zlxz_data instanceof \think\Paginator): $i = 0; $__LIST__ = $zlxz_data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
 							<li>
-								<a href="/jszc_info?id=<?php echo $v['id']; ?>">
-									<img src="<?php echo $v['litpic']; ?>" >
-									<p><?php echo $v['typename']; ?></p>
-								</a>
+								<img src="<?php echo $v['litpic']; ?>" >
+								<div class="names">
+									<p><?php echo $v['title']; ?></p>
+									<a href="javascript:" class="download" data-id="<?php echo $v['aid']; ?>"><?php if($lang=='en'): ?>download now<?php else: ?>立即下载<?php endif; ?>>> </a>
+								</div>
 							</li>
-							<?php endforeach; endif; else: echo "" ;endif; if(is_array($banner) || $banner instanceof \think\Collection || $banner instanceof \think\Paginator): $i = 0; $__LIST__ = $banner;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
-							<li>
-								<a href="<?php echo $v['links']; ?>">
-									<img src="<?php echo $v['litpic']; ?>" title="<?php echo $v['title']; ?>" >
-								</a>
-							</li>
+							
 							<?php endforeach; endif; else: echo "" ;endif; ?>
 						</ul>
 					</div>
 					
 				</div>
 			</div>
-		
-			<div class="container">
+			<input type="hidden" name="__token__" id="token" value=<?php echo \think\Request::instance()->token(); ?>>
+<div class="container">
 	<footer>
 		<div class="wrap">
 			<div class="left">
@@ -116,10 +110,38 @@
 </main>
 		
 
-		
-		
 		<script src="/public/static/index/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/public/static/index/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/public/static/index/js/scroll.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/public/plugins/layer-v3.1.0/layer.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('.download').on('click',function(){
+					var aid = $(this).attr('data-id');
+					var token = $('#token').val();
+					$.post('<?php echo url("index/zlxz/download_url"); ?>',{aid:aid,__token__:token},function(data){
+							$('#token').val(data.token);
+							if(data.code == 3){
+								layer.msg('请刷新页面重试',{icon:5,time:1000});
+							}else{
+								if(data.url != null){
+									window.location.href=data.url;
+								}else{
+									layer.msg('文件暂未上传，请稍候再试',{icon:5,time:1000});
+								}
+							}
+					})
+
+					return false;
+
+
+
+				})
+
+
+			})
+
+
+		</script>
 	</body>
 </html>

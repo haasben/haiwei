@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$cate_data.seo_title}</title>
+		<meta name="keywords" content="{$cate_data.seo_keywords}" />
+		<meta name="description" content="{$cate_data.seo_description}"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/css.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/technology.css"/>
+	</head>
+	<body>
+{include file="cpzx/head"}
+			<div class="container">
+				<div class="row box">
+					<h3>{$cate_data.typename}</h3>
+				</div>
+				<div class="row box box1">
+					<div class="download_wrap">
+						<p>{$cate_data.seo_description}</p>
+						<ul class="download_list">
+							{volist name="$zlxz_data" id="v"}
+							<li>
+								<img src="{$v.litpic}" >
+								<div class="names">
+									<p>{$v.title}</p>
+									<a href="javascript:" class="download" data-id="{$v.aid}">{if condition="$lang=='en'"}download now{else}立即下载{/if}>> </a>
+								</div>
+							</li>
+							
+							{/volist}
+						</ul>
+					</div>
+					
+				</div>
+			</div>
+			<input type="hidden" name="__token__" id="token" value={$Request.token}>
+{include file="common/footer"}
+		<script src="__INDEX__/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/scroll.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/public/plugins/layer-v3.1.0/layer.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('.download').on('click',function(){
+					var aid = $(this).attr('data-id');
+					var token = $('#token').val();
+					$.post('{:url("index/zlxz/download_url")}',{aid:aid,__token__:token},function(data){
+							$('#token').val(data.token);
+							if(data.code == 3){
+								layer.msg('请刷新页面重试',{icon:5,time:1000});
+							}else{
+								if(data.url != null){
+									window.location.href=data.url;
+								}else{
+									layer.msg('文件暂未上传，请稍候再试',{icon:5,time:1000});
+								}
+							}
+					})
+
+					return false;
+
+
+
+				})
+
+
+			})
+
+
+		</script>
+	</body>
+</html>

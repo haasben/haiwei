@@ -10,6 +10,12 @@ class Jszc extends Cates
 
     public function _initialize() {
         parent::_initialize();
+        // dump(request()->action());die;
+        // if(request()->action() == 'index'){
+        //     echo 1;die;
+        //     return $this->jszc_info();
+        // }
+
     }
 
     public function index(){
