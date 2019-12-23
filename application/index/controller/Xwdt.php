@@ -11,22 +11,20 @@ class Xwdt extends Cates
 
     public function _initialize() {
         parent::_initialize();
+        $action = request()->action();
+        $array = ['index','qyxw','news_info','hyzx'];
+        if(!in_array($action,$array)){
+           $this->redirect('/hyzx?id='.input('id'));
+            
+        }
     }
 
     public function index(){
 
     	//默认排序为1的新闻
     	$id = input('id');
-    	if($id == 2 || $id ==35){
-			$limit = 6;
-			$view = 'index';
-		}else{
-			$limit = 7;
-			$view = 'index2';
-		}
 
     	$next_cate = $this->cate_model->get_child_arctype($id);
-    	
     	$new_arr =  array();
 		$parent_id = $next_cate[0]['id'];
 		$cate_data = $this->cate_model->get_cate($parent_id);
@@ -36,7 +34,7 @@ class Xwdt extends Cates
 			->join('h_article_content hc','hc.aid = a.aid')
 			->where('a.typeid',$parent_id)
 			->order('a.add_time desc')
-			->paginate($limit,false,[
+			->paginate(6,false,[
             'query' => request()->param(),
             'type'     => 'bootstrap',
         ]);
@@ -46,7 +44,7 @@ class Xwdt extends Cates
     	$this->assign('cate_data',$cate_data);
 
     	// dump($cate_data);die;
-    	return $this->fetch($view);
+    	return $this->fetch();
 
     }
 
@@ -83,7 +81,6 @@ class Xwdt extends Cates
     	
     	$this->assign('next_cate',$next_cate);
     	$this->assign('cate_data',$cate_data);
-
     	$this->four_year();
 
         return $this->fetch();

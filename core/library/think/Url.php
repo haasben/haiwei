@@ -122,6 +122,7 @@ class Url
                 unset($info['query']);
             }
         }
+
         if (!empty($rule) && $match = self::getRuleUrl($rule, $vars)) {
             // 匹配路由命名标识
             $url = $match[0];
@@ -184,6 +185,7 @@ class Url
         
         $ey_config = config('ey_config'); // URL模式 by 小虎哥
         $seo_pseudo = !empty($seo_pseudo) ? $seo_pseudo : $ey_config['seo_pseudo'];
+
         if (empty($seo_pseudo_format)) {
             if (1 == $seo_pseudo) {
                 $seo_pseudo_format = $ey_config['seo_dynamic_format'];
@@ -191,6 +193,7 @@ class Url
                 $seo_pseudo_format = $ey_config['seo_rewrite_format'];
             }
         }
+
         if ((1 == $seo_pseudo && 1 == $seo_pseudo_format) || 2 == $seo_pseudo) {
             /*默认兼容模式，支持不开启pathinfo模式*/
             $urlinfo = $mca;
@@ -251,6 +254,8 @@ class Url
             } else {
                 $url .= $anchor;
             }
+         
+
             /*--end*/
         } else {
 
@@ -263,7 +268,6 @@ class Url
                 }
             }
             /*--end*/
-            
             // 参数组装
             if (!empty($vars)) {
                 // 添加参数

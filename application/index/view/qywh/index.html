@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$cate_data.seo_title}</title>
+		<meta name="keywords" content="{$cate_data.seo_keywords}" />
+		<meta name="description" content="{$cate_data.seo_description}"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/css.css" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/culture.css" />
+	</head>
+	<body>
+{include file="jszc/head"}
+			<div class="container">
+				<div class="row box">
+					<h3>{$cate_data.typename}</h3>
+				</div>
+				<div class="row box box1">
+					<div class="culture_wrap">
+						{if condition="isset($index_data[0])"}
+						<div class="info">{$index_data.0.englist_name}</div>
+						<ul class="list">
+							{volist name="$index_data.0.child" id="v" key="k"}
+							
+							{if condition="$k == 2"}
+								<li>
+								<a href="javascript:;">
+									<div class="cont">
+										<h4>{$v.title}：</h4>
+										<p>{:strip_tags(htmlspecialchars_decode($v.content))}</p>
+									</div>
+								</a>
+								<a href="javascript:;">
+									<img src="{$v.litpic}">
+								</a>
+							</li>
+
+							{else}
+
+								<li>
+								<a href="javascript:;">
+									<img src="{$v.litpic}">
+								</a>
+								<a href="javascript:;">
+									<div class="cont">
+										<h4>{$v.title}：</h4>
+										<p>{:strip_tags(htmlspecialchars_decode($v.content))}</p>
+									</div>
+								</a>
+							</li>
+							{/if}
+
+
+
+							{/volist}
+						</ul>
+						{/if}
+						{if condition="isset($index_data[1])"}
+						<!-- 华夏芯  海之威 -->
+						<div class="business">
+							<h3>{$index_data.1.typename}</h3>
+							<ul>
+								{volist name="$index_data.1.child" id="v"}
+								<li>
+									<div class="wrp">
+										<img src="{$v.litpic}">
+										<div>
+											<span>{$v.title}</span>
+											<span>{:strip_tags(htmlspecialchars_decode($v.content))}</span>
+										</div>
+									</div>
+								</li>
+								{/volist}
+								
+							</ul>
+						</div>
+						{/if}
+					</div>
+				</div>
+			</div>
+
+{include file="common/footer"}
+
+
+		<script src="__INDEX__/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/scroll.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

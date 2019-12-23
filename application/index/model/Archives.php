@@ -369,5 +369,23 @@ class Archives extends Model
         return $data;
 	}
 
+//企业文化获取某几个分类下的所有图集
+	public function get_child_images_archive($data){
 
+		foreach ($data as $k => $v) {
+			$data[$k]['child'] = self::alias('a')
+				->field('a.aid,a.title,a.litpic,hc.content')
+				->join('h_images_content hc','hc.aid = a.aid')
+				->where('a.typeid',$v['id'])
+				->where('a.is_del',0)
+				->where('a.status',1)
+				->where('a.arcrank',0)
+				->order('a.sort_order')
+				->limit(3)
+				->select();
+		}
+		return $data;
+
+
+	}
 }

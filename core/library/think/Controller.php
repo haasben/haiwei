@@ -84,6 +84,7 @@ class Controller
         $this->home_lang = get_home_lang();
         $this->admin_lang = get_admin_lang();
         $this->main_lang = get_main_lang();
+
         null === $this->version && $this->version = getCmsVersion();
 
         $returnData = $this->pc_to_mobile($this->request);

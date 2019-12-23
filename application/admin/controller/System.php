@@ -38,7 +38,7 @@ class System extends Base
     public function web()
     {
         $inc_type =  'web';
-
+       
         if (IS_POST) {
             $param = input('post.');
             $param['web_keywords'] = str_replace('，', ',', $param['web_keywords']);

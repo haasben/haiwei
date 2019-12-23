@@ -55,6 +55,7 @@ class Arctype extends Base
         $arctype_list = array();
         // 目录列表
         $where['is_del'] = '0'; // 回收站功能
+
         $arctype_list = $this->arctypeLogic->arctype_list(0, 0, false, 0, $where, false);
         $this->assign('arctype_list', $arctype_list);
 

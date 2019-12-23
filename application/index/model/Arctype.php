@@ -21,6 +21,26 @@ class Arctype extends Model
 		return $data;
 
 	}
+//获取分类下面的第一个子集分类下面的所有分类
+	public function get_first_child_all($id){
+
+		$data = self::where('parent_id',$id)
+			->field('litpic,id,typename,dirpath,seo_title,seo_keywords,seo_description')
+			->where('status',1)
+			->where('is_del',0)
+			->order('sort_order')
+			->find();
+		$child = self::where('parent_id',$data['id'])
+			->field('litpic,id,typename,dirpath,seo_title,seo_keywords,seo_description,englist_name')
+			->where('status',1)
+			->where('is_del',0)
+			->order('sort_order')
+			->select();
+		return $child;
+
+
+	}
+
 
 	//根据下级ID获取到上一级信息
 	public function upper_level_id($id){
@@ -99,7 +119,7 @@ class Arctype extends Model
         {
             $category[$k]['child'] = self::field('id,typename,dirpath,is_part,typelink')
             ->where('parent_id',$c['id'])
-            // ->where('is_hidden',0)
+            ->where('is_hidden',0)
             ->where('is_del',0)
             ->where('status',1)
             ->order('sort_order')

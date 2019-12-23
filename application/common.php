@@ -1430,12 +1430,12 @@ if (!function_exists('get_admin_lang'))
     {
         $keys = \think\Config::get('global.admin_lang');
         $admin_lang = \think\Cookie::get($keys);
+
         if (empty($admin_lang)) {
             $admin_lang = input('param.lang/s');
             empty($admin_lang) && $admin_lang = get_main_lang();
             \think\Cookie::set($keys, $admin_lang);
         }
-
         return $admin_lang;
     }
 }

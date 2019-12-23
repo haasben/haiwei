@@ -67,7 +67,7 @@
                          <ul>
                             {volist name='$quickMenu' id='vo'}
                             <li>
-                               <a href="{:url($vo.controller.'/'.$vo.action, $vo.vars)}"><p class="navs">{$vo.title}</p></a>
+                               <a href="{:url($vo.controller.'/'.$vo.action)}"><p class="navs">{$vo.title}</p></a>
                             </li>
                             {/volist}
                             <li>
@@ -84,7 +84,7 @@
                          <ul>
                             {volist name='$contentTotal' id='vo' length='9'}
                             <li>
-                               <a href="{:url($vo.controller.'/'.$vo.action, $vo.vars)}">
+                               <a href="{:url($vo.controller.'/'.$vo.action)}">
                                    <h2>{$vo.title}</h2>
                                    <p><cite>{$vo.total|default='0'}</cite></p>
                                </a>

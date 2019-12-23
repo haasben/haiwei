@@ -365,6 +365,7 @@ class Request
      */
     public function url($url = null)
     {
+        
         if (!is_null($url) && true !== $url) {
             $this->url = $url;
             return $this;

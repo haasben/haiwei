@@ -152,6 +152,7 @@ class Cookie
         !isset(self::$init) && self::init();
 
         $prefix = !is_null($prefix) ? $prefix : self::$config['prefix'];
+
         $key    = $prefix . $name;
 
         if ('' == $name) {

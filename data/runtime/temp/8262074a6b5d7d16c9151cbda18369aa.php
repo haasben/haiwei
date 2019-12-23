@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:44:"D:\WWW\haiwei\public/static/errpage/404.html";i:1571728724;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:44:"D:\WWW\haiwei\public/static/errpage/404.html";i:1577088569;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -29,8 +29,8 @@
 <body>
 <div class="concenter-err">
   <div id="warpper" class="clearfix">
-    <script type="text/javascript" src="//mat1.gtimg.com/pingjs/ext2020/test2017/search_children3.js" charset="utf-8" homePageUrl="/" homePageName='回到网站主页'></script>
-<!--     <div class="error-page error-pic">
+<!--     <script type="text/javascript" src="//mat1.gtimg.com/pingjs/ext2020/test2017/search_children3.js" charset="utf-8" homePageUrl="/" homePageName='回到网站主页'></script> -->
+    <div class="error-page error-pic">
       <div class="error-page-txt error-page-mb37">
         <h3 class="error-page-pl48">抱歉！页面无法访问...</h3>
         <p>您可能输入了错误的网址，或者该页面已经不存在了哦。</p>
@@ -40,7 +40,7 @@
         <a href="/" class="return-index">返回首页</a>
       </div>
     </div>
-   </div> -->
+   </div>
 </div>
 <script type="text/javascript">
   var oSecs = 7;

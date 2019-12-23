@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:44:"./application/admin/template/index\index.htm";i:1576463964;s:59:"D:\WWW\haiwei\application\admin\template\public\menubox.htm";i:1571728724;s:56:"D:\WWW\haiwei\application\admin\template\public\left.htm";i:1571728724;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:44:"./application/admin/template/index\index.htm";i:1577090738;s:59:"D:\WWW\haiwei\application\admin\template\public\menubox.htm";i:1571728724;s:56:"D:\WWW\haiwei\application\admin\template\public\left.htm";i:1577090821;}*/ ?>
 <!doctype html>
 <html>
 <head>

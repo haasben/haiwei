@@ -10,6 +10,13 @@ class Cpzx extends Cates
 
     public function _initialize() {
         parent::_initialize();
+        $action = request()->action();
+        $array = ['index','cpzx_list','cpzx_info'];
+        if(!in_array($action,$array)){
+           
+           $this->redirect('/cpzx_list.html'.'?id='.input('id'));
+            
+        }
     }
 
     public function index(){

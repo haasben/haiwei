@@ -43,6 +43,7 @@ class Index extends Base
         // --end
         $home_default_lang = config('ey_config.system_home_default_lang');
         $admin_lang = $this->admin_lang;
+
         $home_url = request()->domain().ROOT_DIR.'/';  // 支持子目录
         if ($home_default_lang != $admin_lang) {
             $home_url = $language_db->where(['mark'=>$admin_lang])->getField('url');
@@ -138,7 +139,6 @@ class Index extends Base
 
         // 同步导航与内容统计的状态
         $this->syn_open_quickmenu();
-
         // 快捷导航
         $quickMenu = Db::name('quickentry')->where([
                 'type'      => 1,
@@ -148,6 +148,7 @@ class Index extends Base
         foreach ($quickMenu as $key => $val) {
             $quickMenu[$key]['vars'] = !empty($val['vars']) ? $val['vars']."&lang=".$this->admin_lang : "lang=".$this->admin_lang;
         }
+
         $this->assign('quickMenu',$quickMenu);
 
         // 内容统计

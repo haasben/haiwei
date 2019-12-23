@@ -80,6 +80,7 @@ class Think
         }
         // 记录视图信息
         App::$debug && Log::record('[ VIEW ] ' . $template . ' [ ' . var_export(array_keys($data), true) . ' ]', 'info');
+
         $this->template->fetch($template, $data, $config);
     }
 

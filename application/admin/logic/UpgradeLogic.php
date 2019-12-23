@@ -31,15 +31,15 @@ class UpgradeLogic extends Model
      */
     function  __construct() {
          
-        $this->service_ey = config('service_ey');
-        $this->root_path = ROOT_PATH; // 
-        $this->data_path = DATA_PATH; // 
-        $this->version_txt_path = $this->data_path.'conf'.DS.'version.txt'; // 版本文件路径
-        $this->curent_version = getCmsVersion();
-        // api_Service_checkVersion
-        $tmp_str = 'L2luZGV4LnBocD9tPWFwaSZjPVNlcnZpY2UmYT1jaGVja1ZlcnNpb24=';
-        $this->service_url = base64_decode($this->service_ey).base64_decode($tmp_str);
-        $this->upgrade_url = $this->service_url . '&domain='.request()->host(true).'&v=' . $this->curent_version;
+        // $this->service_ey = config('service_ey');
+        // $this->root_path = ROOT_PATH; // 
+        // $this->data_path = DATA_PATH; // 
+        // $this->version_txt_path = $this->data_path.'conf'.DS.'version.txt'; // 版本文件路径
+        // $this->curent_version = getCmsVersion();
+        // // api_Service_checkVersion
+        // $tmp_str = 'L2luZGV4LnBocD9tPWFwaSZjPVNlcnZpY2UmYT1jaGVja1ZlcnNpb24=';
+        // $this->service_url = base64_decode($this->service_ey).base64_decode($tmp_str);
+        // $this->upgrade_url = $this->service_url . '&domain='.request()->host(true).'&v=' . $this->curent_version;
     }
 
     /**

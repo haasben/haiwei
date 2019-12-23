@@ -12,7 +12,7 @@
  */
 
 namespace app\admin\controller;
-use app\admin\logic\UpgradeLogic;
+// use app\admin\logic\UpgradeLogic;
 use think\Controller;
 use think\Db;
 use think\response\Json;
@@ -20,6 +20,7 @@ use think\Session;
 class Base extends Controller {
 
     public $session_id;
+    public $admin_lang;
 
     /**
      * 析构函数
@@ -29,9 +30,17 @@ class Base extends Controller {
         if (!session_id()) {
             Session::start();
         }
+        
         header("Cache-control: private");  // history.back返回后输入框值丢失问题
         parent::__construct();
+        $admin_lang = input('lang');
+        if(empty($admin_lang)){
+            $admin_lang = 'cn';
+        }
+        $this->admin_lang = $admin_lang;
+        cookie('admin_lang',$admin_lang);
 
+        // dump($this->admin_lang);
         $this->global_assign();
 
         /*---------*/
@@ -46,6 +55,8 @@ class Base extends Controller {
      */
     public function _initialize() 
     {
+
+
         $this->session_id = session_id(); // 当前的 session_id
         !defined('SESSION_ID') && define('SESSION_ID', $this->session_id); //将当前的session_id保存为常量，供其它方法调用
 
@@ -75,7 +86,6 @@ class Base extends Controller {
                 $this->redirect($url);
             }
         }
-
         /* 增、改的跳转提示页，只限制于发布文档的模型和自定义模型 */
         $channeltype_list = config('global.channeltype_list');
         $controller_name = $this->request->controller();
@@ -94,7 +104,6 @@ class Base extends Controller {
             cookie('ENV_LIST_URL', request()->baseFile()."?m=admin&c=Archives&a=index_archives&lang=".$this->admin_lang);
         }
         /* end */
-
         /*会员投稿设置*/
         $IsOpenRelease = Db::name('users_menu')->where([
             'mca'  => 'user/UsersRelease/release_centre',

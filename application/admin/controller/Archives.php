@@ -25,6 +25,7 @@ class Archives extends Base
     public function _initialize() {
         parent::_initialize();
         $this->allowReleaseChannel = config('global.allow_release_channel');
+
     }
 
     /**
@@ -35,8 +36,10 @@ class Archives extends Base
         $arctype_list = array();
         // 目录列表
         $arctypeLogic = new ArctypeLogic(); 
+
         $where['is_del'] = '0'; // 回收站功能
         $arctype_list = $arctypeLogic->arctype_list(0, 0, false, 0, $where, false);
+        // dump($where);die;
         $zNodes = "[";
         foreach ($arctype_list as $key => $val) {
             $current_channel = $val['current_channel'];

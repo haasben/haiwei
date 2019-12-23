@@ -61,7 +61,6 @@ class ArctypeLogic extends Model
                 $where['lang'] = get_current_lang();
             }
             /*--end*/
-
             if (!empty($map)) {
                 $where = array_merge($where, $map);
             }

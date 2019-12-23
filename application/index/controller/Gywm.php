@@ -67,6 +67,7 @@ class Gywm extends Cates
     {
 
         $id = input('id');
+
         $this->common_data($id);
         //获取公司荣誉对应年份标题
         $dete_data = $this->archives->dete_data($id);

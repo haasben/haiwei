@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:46:"./application/admin/template/index\welcome.htm";i:1576481831;s:58:"D:\WWW\haiwei\application\admin\template\public\footer.htm";i:1571728724;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:46:"./application/admin/template/index\welcome.htm";i:1577090934;s:58:"D:\WWW\haiwei\application\admin\template\public\footer.htm";i:1571728724;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -66,7 +66,7 @@
                          <ul>
                             <?php if(is_array($quickMenu) || $quickMenu instanceof \think\Collection || $quickMenu instanceof \think\Paginator): $i = 0; $__LIST__ = $quickMenu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                             <li>
-                               <a href="<?php echo url($vo['controller'].'/'.$vo['action'], $vo['vars']); ?>"><p class="navs"><?php echo $vo['title']; ?></p></a>
+                               <a href="<?php echo url($vo['controller'].'/'.$vo['action']); ?>"><p class="navs"><?php echo $vo['title']; ?></p></a>
                             </li>
                             <?php endforeach; endif; else: echo "" ;endif; ?>
                             <li>
@@ -83,7 +83,7 @@
                          <ul>
                             <?php if(is_array($contentTotal) || $contentTotal instanceof \think\Collection || $contentTotal instanceof \think\Paginator): $i = 0;$__LIST__ = is_array($contentTotal) ? array_slice($contentTotal,0,9, true) : $contentTotal->slice(0,9, true); if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                             <li>
-                               <a href="<?php echo url($vo['controller'].'/'.$vo['action'], $vo['vars']); ?>">
+                               <a href="<?php echo url($vo['controller'].'/'.$vo['action']); ?>">
                                    <h2><?php echo $vo['title']; ?></h2>
                                    <p><cite><?php echo (isset($vo['total']) && ($vo['total'] !== '')?$vo['total']:'0'); ?></cite></p>
                                </a>

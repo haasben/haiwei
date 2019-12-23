@@ -72,7 +72,7 @@ class Admin extends Base {
         /*第一次同步CMS用户的栏目ID到权限组里*/
         $this->syn_built_auth_role();
         /*--end*/
-
+      
         return $this->fetch();
     }
 

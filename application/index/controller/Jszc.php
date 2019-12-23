@@ -2,6 +2,7 @@
 namespace app\index\controller;
 
 use think\Db;
+use think\Route;
 /**
  * @param 技术支持
  */
@@ -10,17 +11,17 @@ class Jszc extends Cates
 
     public function _initialize() {
         parent::_initialize();
-        // dump(request()->action());die;
-        // if(request()->action() == 'index'){
-        //     echo 1;die;
-        //     return $this->jszc_info();
-        // }
+        $action = request()->action();
+        $array = ['index','jszc_info'];
+        if(!in_array($action,$array)){
+           $this->redirect('/jszc_info.html?id='.input('id'));
+            
+        }
 
     }
 
     public function index(){
     	
-
     	$id = input('id');
     	//获取分类信息
         $cate_data = $this->cate_model->get_cate($id);
@@ -61,9 +62,7 @@ class Jszc extends Cates
         //获取到分类的第一条数据
         $data = $this->archives->get_first_image_archives($id);
         $this->assign('data',$data);
-
-
-
-    	return $this->fetch();
+        return $this->fetch('jszc_info');
+    	
     }
 }
