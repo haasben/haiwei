@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:52:"D:\WWW\haiwei/application/index\view\jszc\index.html";i:1576832243;s:51:"D:\WWW\haiwei\application\index\view\jszc\head.html";i:1576830886;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577151019;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:52:"D:\WWW\haiwei/application/index\view\jszc\index.html";i:1576832243;s:51:"D:\WWW\haiwei\application\index\view\jszc\head.html";i:1577173729;s:53:"D:\WWW\haiwei\application\index\view\common\left.html";i:1577173947;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577151019;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,12 +13,12 @@
 	</head>
 	<body>
 
-	<div class="left_nav">
+		<div class="left_nav">
 		<img src="/public/static/index/img/logo.png" class="logo">
 		<div class="menu">
 			<a href="javascript:"><img src="/public/static/index/img/menu.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/search.png" ></a>
-			<a href="javascript:"><img src="/public/static/index/img/web.png" ></a>
+			<a href="<?php echo url('index/index/up_lang'); ?>"><img src="/public/static/index/img/web.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/wechat.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/link.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/other.png" ></a>
@@ -36,6 +36,7 @@
 		<a href="javascript:"><img src="/public/static/index/img/link.png" ></a>
 		<a href="javascript:"><img src="/public/static/index/img/other.png" ></a>
 	</div>
+	
 	<ul class="menus mobile_menu">
 		<li><a href="#"><?php if($lang == en): ?>Home<?php else: ?>首页<?php endif; ?></a></li>
 		<?php if(is_array($category) || $category instanceof \think\Collection || $category instanceof \think\Paginator): $i = 0; $__LIST__ = $category;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>

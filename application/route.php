@@ -54,6 +54,10 @@ $routes = array(
 
      //资料下载
      'zlxz'=>'index/zlxz/index',
+
+     //人才招聘
+     'rczp'=>'index/rczp/index',
+     'rczp/jrwm'=>'index/rczp/jrwm',
 );
 
 $route = array(

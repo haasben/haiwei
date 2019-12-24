@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:52:"D:\WWW\haiwei/application/index\view\zlxz\index.html";i:1577073307;s:51:"D:\WWW\haiwei\application\index\view\cpzx\head.html";i:1577088030;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577151019;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:52:"D:\WWW\haiwei/application/index\view\zlxz\index.html";i:1577073307;s:51:"D:\WWW\haiwei\application\index\view\cpzx\head.html";i:1577173705;s:53:"D:\WWW\haiwei\application\index\view\common\left.html";i:1577173947;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577151019;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,12 +13,12 @@
 	</head>
 	<body>
 
-	<div class="left_nav">
+		<div class="left_nav">
 		<img src="/public/static/index/img/logo.png" class="logo">
 		<div class="menu">
 			<a href="javascript:"><img src="/public/static/index/img/menu.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/search.png" ></a>
-			<a href="javascript:"><img src="/public/static/index/img/web.png" ></a>
+			<a href="<?php echo url('index/index/up_lang'); ?>"><img src="/public/static/index/img/web.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/wechat.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/link.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/other.png" ></a>

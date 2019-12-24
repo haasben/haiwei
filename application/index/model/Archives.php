@@ -33,6 +33,22 @@ class Archives extends Model
 		self::where('aid',$aid)->setInc('click');
 	}
 
+//获取单页模板某个列表下面的第一篇文章
+	public function get_singel_archives_info($id){
+
+		$data = self::alias('a')
+		->field('a.title,hc.content')
+		->join('h_single_content hc','hc.aid = a.aid')
+		->where('a.typeid',$id)
+		->where('a.status',1)
+		->where('a.is_del',0)
+		->limit(1)
+		->find();
+		return $data;
+
+
+
+	}
 
 
 	//获取公司介绍详情，及公司环境图片

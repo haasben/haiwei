@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:52:"D:\WWW\haiwei/application/index\view\xwdt\index.html";i:1577167767;s:51:"D:\WWW\haiwei\application\index\view\gywm\head.html";i:1577157244;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577151019;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:52:"D:\WWW\haiwei/application/index\view\xwdt\index.html";i:1577179414;s:51:"D:\WWW\haiwei\application\index\view\gywm\head.html";i:1577173633;s:53:"D:\WWW\haiwei\application\index\view\common\left.html";i:1577173947;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577151019;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,7 +18,7 @@
 		<div class="menu">
 			<a href="javascript:"><img src="/public/static/index/img/menu.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/search.png" ></a>
-			<a href="javascript:"><img src="/public/static/index/img/web.png" ></a>
+			<a href="<?php echo url('index/index/up_lang'); ?>"><img src="/public/static/index/img/web.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/wechat.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/link.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/other.png" ></a>
@@ -81,10 +81,9 @@
 							<li>
 								<div class="wrap">
 									<a href="/news_info?aid=<?php echo $v['aid']; ?>&typeid=<?php echo $cate_data['id']; ?>">
-										<div class="pic" style="background-image: url(<?php echo $v['litpic']; ?>);">
+										<div class="pic" style="background-image: url(<?php echo $v['litpic']; ?>);background-repeat:no-repeat;background-size: 100% 100%;">
 										</div>
 									</a>
-									
 									<div class="desc">
 										<a href="/news_info?aid=<?php echo $v['aid']; ?>&typeid=<?php echo $cate_data['id']; ?>">
 											<div class="time">
@@ -100,7 +99,6 @@
 								</div>
 							</li>
 							<?php endforeach; endif; else: echo "" ;endif; ?>
-							
 						</ul>
 						<!-- 分页 -->
 						<?php echo $cate_data['new_arr']->render(); ?>

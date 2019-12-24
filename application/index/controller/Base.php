@@ -14,13 +14,8 @@ class base extends Controller
     public $archives;
     public function _initialize() {
 
-
-        $this->cate_model = Model('Arctype');
-        $this->archives = Model('Archives');
-
     /**********语言***********/ 
-         cookie('lang','cn');
-        $lang = cookie('lang');
+        $lang = cookie('index_lang');
         if($lang != 'en'){
             $lang = 'cn';
         }
@@ -36,9 +31,12 @@ class base extends Controller
         }
 
         $this->assign('web_config',$web_config);
-        
+        /***********实例化分类表和文章表***********/
+        $this->cate_model = Model('Arctype');
+        $this->archives = Model('Archives');
         //首页分类
         $category = $this->cate_model->get_cates($lang);
+ 
 
         $this->assign('category',$category);
     }

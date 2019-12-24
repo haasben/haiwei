@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:52:"D:\WWW\haiwei/application/index\view\gywm\gslcb.html";i:1576737002;s:51:"D:\WWW\haiwei\application\index\view\gywm\head.html";i:1576825776;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577151019;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:52:"D:\WWW\haiwei/application/index\view\gywm\gslcb.html";i:1576737002;s:51:"D:\WWW\haiwei\application\index\view\gywm\head.html";i:1577173633;s:53:"D:\WWW\haiwei\application\index\view\common\left.html";i:1577173810;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577151019;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,7 +17,7 @@
 		<div class="menu">
 			<a href="javascript:"><img src="/public/static/index/img/menu.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/search.png" ></a>
-			<a href="javascript:"><img src="/public/static/index/img/web.png" ></a>
+			<a href="<?php echo url('index/index/up_lang'); ?>"><img src="/public/static/index/img/web.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/wechat.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/link.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/other.png" ></a>

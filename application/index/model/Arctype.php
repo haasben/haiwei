@@ -114,6 +114,7 @@ class Arctype extends Model
             ->where('is_del',0)
             ->order('sort_order')
             ->select();
+         // dump($category);die;
         //循环拿到二级分类信息
         foreach ($category as $k => $c) 
         {

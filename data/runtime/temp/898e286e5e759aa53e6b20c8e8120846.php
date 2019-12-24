@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:53:"D:\WWW\haiwei/application/index\view\index\index.html";i:1576834570;s:46:"D:\WWW\haiwei\application\index\view\head.html";i:1576549489;s:48:"D:\WWW\haiwei\application\index\view\footer.html";i:1576658880;s:53:"D:\WWW\haiwei\application\index\view\mobile_head.html";i:1576658686;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:53:"D:\WWW\haiwei/application/index\view\index\index.html";i:1576834570;s:46:"D:\WWW\haiwei\application\index\view\head.html";i:1577173584;s:53:"D:\WWW\haiwei\application\index\view\common\left.html";i:1577173947;s:48:"D:\WWW\haiwei\application\index\view\footer.html";i:1576658880;s:53:"D:\WWW\haiwei\application\index\view\mobile_head.html";i:1576658686;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -14,29 +14,29 @@
 		<script src="/public/static/index/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
-		<div class="left_nav">
-			<a href="/"><img src="/public/static/index/img/logo.png" class="logo"></a>
-			<div class="menu">
-				<a href="javascript:"><img src="/public/static/index/img/menu.png" ></a>
-				<a href="javascript:"><img src="/public/static/index/img/search.png" ></a>
-				<a href="javascript:"><img src="/public/static/index/img/web.png" ></a>
-				<a href="javascript:"><img src="/public/static/index/img/wechat.png" ></a>
-				<a href="javascript:"><img src="/public/static/index/img/link.png" ></a>
-				<a href="javascript:"><img src="/public/static/index/img/other.png" ></a>
-			</div>
-		</div>
-		<div class="header">
-			<a href="/"><img class="logo" src="/public/static/index/img/logo.png" ></a>
-			<a href="#"><img src="/public/static/index/img/list.png" class="nav"></a>
-		</div>
-		<div class="mobile_nav">
-			<a href="javascript:"><img src="/public/static/index/img/menu.png" class="mobile_list_btn"></a>
+			<div class="left_nav">
+		<img src="/public/static/index/img/logo.png" class="logo">
+		<div class="menu">
+			<a href="javascript:"><img src="/public/static/index/img/menu.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/search.png" ></a>
-			<a href="javascript:"><img src="/public/static/index/img/web.png" ></a>
+			<a href="<?php echo url('index/index/up_lang'); ?>"><img src="/public/static/index/img/web.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/wechat.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/link.png" ></a>
 			<a href="javascript:"><img src="/public/static/index/img/other.png" ></a>
 		</div>
+	</div>
+	<div class="header">
+		<a href="/"><img class="logo" src="/public/static/index/img/logo.png" ></a>
+		<a href="#"><img src="/public/static/index/img/list.png" class="nav"></a>
+	</div>
+	<div class="mobile_nav">
+		<a href="javascript:"><img src="/public/static/index/img/menu.png" class="mobile_list_btn"></a>
+		<a href="javascript:"><img src="/public/static/index/img/search.png" ></a>
+		<a href="javascript:"><img src="/public/static/index/img/web.png" ></a>
+		<a href="javascript:"><img src="/public/static/index/img/wechat.png" ></a>
+		<a href="javascript:"><img src="/public/static/index/img/link.png" ></a>
+		<a href="javascript:"><img src="/public/static/index/img/other.png" ></a>
+	</div>
 		<ul class="menus mobile_menu">
 			<li><a href="/"><?php if($lang == en): ?>Home<?php else: ?>首页<?php endif; ?></a></li>
 			<?php if(is_array($category) || $category instanceof \think\Collection || $category instanceof \think\Paginator): $i = 0; $__LIST__ = $category;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>

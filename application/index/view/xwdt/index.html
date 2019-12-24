@@ -33,10 +33,9 @@
 							<li>
 								<div class="wrap">
 									<a href="/news_info?aid={$v.aid}&typeid={$cate_data.id}">
-										<div class="pic" style="background-image: url({$v.litpic});">
+										<div class="pic" style="background-image: url({$v.litpic});background-repeat:no-repeat;background-size: 100% 100%;">
 										</div>
 									</a>
-									
 									<div class="desc">
 										<a href="/news_info?aid={$v.aid}&typeid={$cate_data.id}">
 											<div class="time">
@@ -52,7 +51,6 @@
 								</div>
 							</li>
 							{/volist}
-							
 						</ul>
 						<!-- 分页 -->
 						{$cate_data.new_arr->render()}

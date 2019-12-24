@@ -149,6 +149,19 @@ class Index extends Base
     }
 
 
+    public function up_lang(){
+
+        $lang = cookie('index_lang');
+        if($lang == 'en'){
+            cookie('index_lang','cn');
+        }else{
+            cookie('index_lang','en');
+        }
+        $this->redirect('/');
+
+
+
+    }
 
 
     /**

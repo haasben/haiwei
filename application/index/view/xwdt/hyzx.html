@@ -1,1 +1,51 @@
-1123
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$cate_data.seo_title}</title>
+		<meta name="keywords" content="{$cate_data.seo_keywords}" />
+		<meta name="description" content="{$cate_data.seo_description}"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/css.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/news.css"/>
+	</head>
+	<body>
+		{include file="gywm/head"}
+			<div class="container">
+				<div class="row box">
+					<h3>{$cate_data.typename}</h3>
+				</div>
+				<div class="row box box1">
+					<div class="news_wrap">
+						<ul class="news_list">
+							{volist name="$cate_data.new_arr" id="v"}
+							<li>
+								<div class="left">
+									<span>{:date('d',$v.add_time)}</span>
+												<span>{:date('Y.m',$v.add_time)}</span>
+								</div>
+								<div class="right">
+									<a href="/news_info?aid={$v.aid}&typeid={$cate_data.id}">
+										<p>{$v.title}</p>
+										<p>{:mb_substr(strip_tags(htmlspecialchars_decode($v.content)),0,200)}....</p>
+									</a>
+								</div>
+							</li>
+							{/volist}
+							
+						</ul>
+						<!-- 分页 -->
+						{$cate_data.new_arr->render()}
+					</div>
+				</div>
+			</div>
+		
+{include file="common/footer"}
+		
+		
+		<script src="__INDEX__/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/scroll.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

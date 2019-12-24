@@ -51,6 +51,7 @@ class Xwdt extends Cates
     	// dump($cate_data);die;
     	return $this->fetch();
 
+
     }
 
 //获取最近4年的时间

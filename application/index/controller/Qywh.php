@@ -13,6 +13,7 @@ class Qywh extends Cates
 
         $url = request()->url();
         $action = request()->action();
+        
         if($action == 'index'){
             if(strpos($url,'qywh/')!==false){
                 $this->redirect('/qywh/shzr?id='.input('id'));
@@ -59,7 +60,6 @@ class Qywh extends Cates
 
 //社会责任
     public function shzr(){
-
 
         $id = input('id');
         $this->common_data($id);
