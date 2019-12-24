@@ -20,7 +20,7 @@ if (extension_loaded('zlib')){
     }
     ob_start('ob_gzhandler');
 }
-echo 1;
+
 // 缓存时间
 define('EYOUCMS_CACHE_TIME', 86400);
 // 数据绝对路径
