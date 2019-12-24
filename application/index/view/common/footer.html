@@ -8,23 +8,11 @@
 			<div class="right">
 
 			{volist name="$category" id="c"}
-			<?php $dirpaths = url($c['dirpath']);?>
+
 				<dl>
-					<dt><a href="{if condition='$c.is_part == 1'}{$c.typelink}{else}
-
-						{$dirpaths}?id={$c.id}
-
-						{/if}">{$c.typename}</a></dt>
+					<dt><a href="{if condition='$c.is_part == 1'}{$c.typelink}{else}{$c.dirpath}?id={$c.id}{/if}">{$c.typename}</a></dt>
 					{volist name="$c.child" id="v"}
-
-					<?php $dirpath_child = url('index'.$v['dirpath']);?>
-
-					 <dd><a href="{if condition='$v.is_part == 1'}{$v.typelink}{else}
-
-					 	{$dirpath_child}?id={$v.id}
-
-
-					 	{/if}">{$v.typename}</a></dd> 
+					 <dd><a href="{if condition='$v.is_part == 1'}{$v.typelink}{else}{$v.dirpath}?id={$v.id}{/if}">{$v.typename}</a></dd> 
 					{/volist}
 				</dl>
 			{/volist}

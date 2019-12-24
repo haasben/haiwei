@@ -1,1 +1,52 @@
-新闻动态
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$new_info.seo_title}</title>
+		<meta name="keywords" content="{$new_info.seo_keywords}" />
+		<meta name="description" content="{$new_info.seo_description}"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/css.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/news.css"/>
+	</head>
+	<body>
+{include file="gywm/head"}
+			<div class="container">
+				<div class="row box tabs">
+					<h3>{$cate_data.typename}</h3>
+					<ul>
+						{volist name="$date_arr" id="v"}
+						<li>
+							<a href="{$cate_data.dirpath}?id={$cate_data.id}&year={$v}">{$v}{if condition="$lang=='cn'"}年{/if}</a>
+						</li>
+						{/volist}
+						<li>
+							<a href="{$cate_data.dirpath}?id={$cate_data.id}">{if condition="$lang=='cn'"}查看更多{else}see more{/if}</a>
+						</li>
+					</ul>
+				</div>
+				<div class="row box box1">
+					<div class="news_wrap">
+						<div class="detail_title">
+							<p>{$new_info.title}</p>
+							<span>{:date('Y / m / d',$new_info.add_time)}</span>
+						</div>
+						<div class="detail_content">
+                           {:htmlspecialchars_decode($new_info.content)}
+						</div>
+						<a href="javascript:" class="back" onclick="history.go(-1);">
+							<img src="__INDEX__/img/back.png" >
+						</a>
+					</div>
+				</div>
+			</div>
+		
+{include file="common/footer"}
+		
+		
+		<script src="__INDEX__/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/scroll.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

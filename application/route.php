@@ -29,6 +29,8 @@ $routes = array(
 
      //企业文化
      'qywh'=>'index/qywh/index',
+     'qywh/hxsh'=>'index/qywh/hxsh',
+     'qywh/shzr'=>'index/qywh/shzr',
 
      //技术支持
      'jszc'=>'index/jszc/index',

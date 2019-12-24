@@ -10,6 +10,7 @@ class Gywm extends Cates
 
     public function _initialize() {
         parent::_initialize();
+
     }
 
 /******************关于我们首页***********/
@@ -55,8 +56,7 @@ class Gywm extends Cates
 
     /******************公司简介***********/
     public function gsjj()
-    {
-    	
+    {   
         $id = input('id');
         $this->common_data($id);
     	return $this->fetch();

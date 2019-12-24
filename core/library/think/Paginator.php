@@ -142,7 +142,8 @@ abstract class Paginator implements ArrayAccess, Countable, IteratorAggregate, J
 
         if (!empty($parameters)) {
             if (!stristr($url, 'index.php')) {
-                $url = rtrim($url, '/').'/';
+                // $url = rtrim($url, '/').'/';
+                $url = rtrim($url, '/');
             }
             $url .= '?' . http_build_query($parameters, null, '&');
         }

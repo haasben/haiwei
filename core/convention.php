@@ -297,7 +297,7 @@ return [
 
     //自定义
     'ey_config' => [
-        'seo_pseudo'    => 3, // 默认纯动态URL模式，兼容不支持pathinfo环境
+        'seo_pseudo'    => 1, // 默认纯动态URL模式，兼容不支持pathinfo环境
         'seo_dynamic_format'    => 1, // 1=兼容模式的URL，2=伪动态
         'seo_rewrite_format' => 1, // 1=精简伪静态，2=层次栏目伪静态
         'seo_inlet' => 0, // 0=保留入口文件，1=隐藏入口文件

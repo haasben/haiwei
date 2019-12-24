@@ -71,6 +71,7 @@ class Bootstrap extends Paginator
 
         if ($this->lastPage < $window + 6) {
             $block['first'] = $this->getUrlRange(1, $this->lastPage);
+
         } elseif ($this->currentPage <= $window) {
             $block['first'] = $this->getUrlRange(1, $window + 2);
             $block['last']  = $this->getUrlRange($this->lastPage - 1, $this->lastPage);
@@ -84,7 +85,7 @@ class Bootstrap extends Paginator
         }
 
         $html = '';
-
+        // dump($block['first']);die;
         if (is_array($block['first'])) {
             $html .= $this->getUrlLinks($block['first']);
         }

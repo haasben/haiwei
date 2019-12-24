@@ -11,11 +11,15 @@ class Jszc extends Cates
 
     public function _initialize() {
         parent::_initialize();
+
+        $url = request()->url();
         $action = request()->action();
-        $array = ['index','jszc_info'];
-        if(!in_array($action,$array)){
-           $this->redirect('/jszc_info.html?id='.input('id'));
-            
+
+        if($action == 'index'){
+
+            if(strpos($url,'jszc/')!==false){
+                $this->redirect('/jszc_info.html?id='.input('id'));
+            }
         }
 
     }

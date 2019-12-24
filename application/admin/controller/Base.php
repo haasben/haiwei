@@ -33,12 +33,12 @@ class Base extends Controller {
         
         header("Cache-control: private");  // history.back返回后输入框值丢失问题
         parent::__construct();
-        $admin_lang = input('lang');
-        if(empty($admin_lang)){
-            $admin_lang = 'cn';
-        }
-        $this->admin_lang = $admin_lang;
-        cookie('admin_lang',$admin_lang);
+        // $admin_lang = input('lang');
+        // if(empty($admin_lang)){
+        //     $admin_lang = 'cn';
+        // }
+        // $this->admin_lang = $admin_lang;
+        // cookie('admin_lang',$admin_lang);
 
         // dump($this->admin_lang);
         $this->global_assign();

@@ -11,11 +11,16 @@ class Xwdt extends Cates
 
     public function _initialize() {
         parent::_initialize();
+
+        $url = request()->url();
         $action = request()->action();
-        $array = ['index','qyxw','news_info','hyzx'];
-        if(!in_array($action,$array)){
-           $this->redirect('/hyzx?id='.input('id'));
-            
+
+        if($action == 'index'){
+            if(strpos($url,'xwdt/')!==false){
+
+                $param = http_build_query(input());
+                $this->redirect('/hyzx.html?'.$param);
+            }
         }
     }
 
@@ -24,9 +29,9 @@ class Xwdt extends Cates
     	//默认排序为1的新闻
     	$id = input('id');
 
-    	$next_cate = $this->cate_model->get_child_arctype($id);
+    	$cates = $this->cate_model->get_child_arctype($id);
     	$new_arr =  array();
-		$parent_id = $next_cate[0]['id'];
+		$parent_id = $cates[0]['id'];
 		$cate_data = $this->cate_model->get_cate($parent_id);
 		$cate_data['new_arr'] = Db::name('archives')
 			->alias('a')
@@ -38,9 +43,9 @@ class Xwdt extends Cates
             'query' => request()->param(),
             'type'     => 'bootstrap',
         ]);
-    	
+
 		$this->four_year();
-		$this->assign('next_cate',$next_cate);
+		$this->assign('cates',$cates);
     	$this->assign('cate_data',$cate_data);
 
     	// dump($cate_data);die;
@@ -62,9 +67,19 @@ class Xwdt extends Cates
 
     //企业新闻
     public function qyxw(){
-
     	$id = input('id');
-    	$next_cate = $this->cate_model->get_Peer_cate($id);
+        $year = input('year');
+
+        $where = array();
+        if(!empty($year)){
+            $smonth = 1;
+            $emonth = 12;
+            $startTime = $year.'-'.$smonth.'-1';
+            $em = $year.'-'.$emonth.'-31';
+            $where['a.add_time'] = ['between time',[$startTime,$em]];
+        }
+        $where['a.typeid'] = $id;
+    	$cates = $this->cate_model->get_Peer_cate($id);
         
         //当前分类
         $cate_data = $this->cate_model->get_cate($id);
@@ -72,18 +87,18 @@ class Xwdt extends Cates
 			->alias('a')
 			->field('a.aid,a.typeid,a.title,a.litpic,a.add_time,hc.content')
 			->join('h_article_content hc','hc.aid = a.aid')
-			->where('a.typeid',$id)
+			->where($where)
 			->order('a.add_time desc')
 			->paginate(6,false,[
             'query' => request()->param(),
             'type'     => 'bootstrap',
         ]);
     	
-    	$this->assign('next_cate',$next_cate);
+    	$this->assign('cates',$cates);
     	$this->assign('cate_data',$cate_data);
     	$this->four_year();
 
-        return $this->fetch();
+        return $this->fetch('index');
 
     }
 
@@ -91,7 +106,7 @@ class Xwdt extends Cates
     public function hyzx(){
 
     	$id = input('id');
-    	$next_cate = $this->cate_model->get_Peer_cate($id);
+    	$cates = $this->cate_model->get_Peer_cate($id);
         
         //当前分类
         $cate_data = $this->cate_model->get_cate($id);
@@ -106,7 +121,7 @@ class Xwdt extends Cates
             'type'     => 'bootstrap',
         ]);
     	
-    	$this->assign('next_cate',$next_cate);
+    	$this->assign('cates',$cates);
     	$this->assign('cate_data',$cate_data);
 
         return $this->fetch();
@@ -118,7 +133,7 @@ class Xwdt extends Cates
     	$aid = input('aid');
     	$typeid = input('typeid');
     	//获取同级和当前分类
-    	$next_cate = $this->cate_model->get_Peer_cate($typeid);
+    	$cates = $this->cate_model->get_Peer_cate($typeid);
     	$cate_data = $this->cate_model->get_cate($typeid);
 
     	//新闻详情
@@ -126,10 +141,10 @@ class Xwdt extends Cates
     	$bool = $this->archives->add_click($aid);
     	$new_info = $this->archives->nesw_info($aid);
 
-    	$this->assign('next_cate',$next_cate);
+    	$this->assign('cates',$cates);
     	$this->assign('cate_data',$cate_data);
     	$this->assign('new_info',$new_info);
-
+        $this->four_year();
     	return $this->fetch();
     }
 

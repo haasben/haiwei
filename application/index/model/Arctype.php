@@ -82,7 +82,7 @@ class Arctype extends Model
 			->field('id,typename,dirpath,parent_id')
 			->where('is_del',0)
 			->where('status',1)
-			// ->where('is_hidden',0)
+			->where('is_hidden',0)
 			->select();
 		return $cates;
 

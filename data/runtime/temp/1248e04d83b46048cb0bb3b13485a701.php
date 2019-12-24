@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:52:"D:\WWW\haiwei/application/index\view\qywh\index.html";i:1577097366;s:51:"D:\WWW\haiwei\application\index\view\jszc\head.html";i:1576830886;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577086748;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:52:"D:\WWW\haiwei/application/index\view\qywh\index.html";i:1577157286;s:51:"D:\WWW\haiwei\application\index\view\gywm\head.html";i:1577157244;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577151019;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -56,7 +56,7 @@
 			<img src="<?php echo $cate_data['litpic']; ?>" >
 			<ul class="company_menu">
 				<?php if(is_array($cates) || $cates instanceof \think\Collection || $cates instanceof \think\Paginator): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
-				<li><a href="/jszc_info?id=<?php echo $v['id']; ?>"><?php echo $v['typename']; ?></a></li>
+				<li><a href="<?php echo $v['dirpath']; ?>?id=<?php echo $v['id']; ?>"><?php echo $v['typename']; ?></a></li>
 				<?php endforeach; endif; else: echo "" ;endif; ?>
 			</ul>
 		</div>
@@ -130,16 +130,12 @@
 			</div>
 			<div class="right">
 
-			<?php if(is_array($category) || $category instanceof \think\Collection || $category instanceof \think\Paginator): $i = 0; $__LIST__ = $category;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$c): $mod = ($i % 2 );++$i;$dirpaths = url($c['dirpath']);?>
+			<?php if(is_array($category) || $category instanceof \think\Collection || $category instanceof \think\Paginator): $i = 0; $__LIST__ = $category;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$c): $mod = ($i % 2 );++$i;?>
+
 				<dl>
-					<dt><a href="<?php if($c['is_part'] == 1): ?><?php echo $c['typelink']; else: ?>
-
-						<?php echo $dirpaths; ?>?id=<?php echo $c['id']; endif; ?>"><?php echo $c['typename']; ?></a></dt>
-					<?php if(is_array($c['child']) || $c['child'] instanceof \think\Collection || $c['child'] instanceof \think\Paginator): $i = 0; $__LIST__ = $c['child'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;$dirpath_child = url('index'.$v['dirpath']);?>
-
-					 <dd><a href="<?php if($v['is_part'] == 1): ?><?php echo $v['typelink']; else: ?>
-
-					 	<?php echo $dirpath_child; ?>?id=<?php echo $v['id']; endif; ?>"><?php echo $v['typename']; ?></a></dd> 
+					<dt><a href="<?php if($c['is_part'] == 1): ?><?php echo $c['typelink']; else: ?><?php echo $c['dirpath']; ?>?id=<?php echo $c['id']; endif; ?>"><?php echo $c['typename']; ?></a></dt>
+					<?php if(is_array($c['child']) || $c['child'] instanceof \think\Collection || $c['child'] instanceof \think\Paginator): $i = 0; $__LIST__ = $c['child'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
+					 <dd><a href="<?php if($v['is_part'] == 1): ?><?php echo $v['typelink']; else: ?><?php echo $v['dirpath']; ?>?id=<?php echo $v['id']; endif; ?>"><?php echo $v['typename']; ?></a></dd> 
 					<?php endforeach; endif; else: echo "" ;endif; ?>
 				</dl>
 			<?php endforeach; endif; else: echo "" ;endif; ?>
