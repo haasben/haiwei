@@ -58,6 +58,7 @@ $routes = array(
      //人才招聘
      'rczp'=>'index/rczp/index',
      'rczp/jrwm'=>'index/rczp/jrwm',
+     'rczp/rcfz'=>'index/rczp/rcfz',
 );
 
 $route = array(

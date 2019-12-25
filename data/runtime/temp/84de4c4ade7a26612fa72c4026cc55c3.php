@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:52:"D:\WWW\haiwei/application/index\view\xwdt\index.html";i:1577182813;s:51:"D:\WWW\haiwei\application\index\view\gywm\head.html";i:1577173633;s:53:"D:\WWW\haiwei\application\index\view\common\left.html";i:1577173947;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577151019;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:51:"D:\WWW\haiwei/application/index\view\rczp\rcfz.html";i:1577238527;s:51:"D:\WWW\haiwei\application\index\view\gywm\head.html";i:1577173633;s:53:"D:\WWW\haiwei\application\index\view\common\left.html";i:1577173947;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577151019;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,7 +9,7 @@
 		<meta name="description" content="<?php echo $cate_data['seo_description']; ?>"/>
 		<link rel="stylesheet" type="text/css" href="/public/static/index/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="/public/static/index/css/css.css"/>
-		<link rel="stylesheet" type="text/css" href="/public/static/index/css/news.css"/>
+		<link rel="stylesheet" type="text/css" href="/public/static/index/css/recruit.css"/>
 	</head>
 	<body>
 		
@@ -63,46 +63,23 @@
 			<div class="container">
 				<div class="row box tabs">
 					<h3><?php echo $cate_data['typename']; ?></h3>
-					<ul>
-						<?php if(is_array($date_arr) || $date_arr instanceof \think\Collection || $date_arr instanceof \think\Paginator): $i = 0; $__LIST__ = $date_arr;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
-						<li>
-							<a href="<?php echo $cate_data['dirpath']; ?>?id=<?php echo $cate_data['id']; ?>&year=<?php echo $v; ?>"><?php echo $v; if($lang=='cn'): ?>年<?php endif; ?></a>
-						</li>
-						<?php endforeach; endif; else: echo "" ;endif; ?>
-						<li>
-							<a href="<?php echo $cate_data['dirpath']; ?>?id=<?php echo $cate_data['id']; ?>"><?php if($lang=='cn'): ?>查看更多<?php else: ?>see more<?php endif; ?></a>
-						</li>
-					</ul>
 				</div>
 				<div class="row box box1">
-					<div class="news_wrap">
+					<div class="rczp_wrap">
+						<p class="tt"><?php echo $cate_data['seo_description']; ?></p>
 						<ul class="list">
-							<?php if(is_array($cate_data['new_arr']) || $cate_data['new_arr'] instanceof \think\Collection || $cate_data['new_arr'] instanceof \think\Paginator): $i = 0; $__LIST__ = $cate_data['new_arr'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
+							<?php if(is_array($cate_data['child']) || $cate_data['child'] instanceof \think\Collection || $cate_data['child'] instanceof \think\Paginator): $i = 0; $__LIST__ = $cate_data['child'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
 							<li>
-								<div class="wrap">
-									<a href="/news_info?aid=<?php echo $v['aid']; ?>&typeid=<?php echo $cate_data['id']; ?>">
-										<div class="pic" style="background-image: url(<?php echo $v['litpic']; ?>);background-repeat:no-repeat;background-size: 100% 100%;">
-										</div>
-									</a>
-									<div class="desc">
-										<a href="/news_info?aid=<?php echo $v['aid']; ?>&typeid=<?php echo $cate_data['id']; ?>">
-											<div class="time">
-												<span><?php echo date('d',$v['add_time']); ?></span>
-												<span><?php echo date('Y.m',$v['add_time']); ?></span>
-											</div>
-											<div class="con">
-												<h4><?php echo $v['title']; ?></h4>
-												<div><?php echo mb_substr(strip_tags(htmlspecialchars_decode($v['content'])),0,70); ?>......</div>
-											</div>
-										</a>
-									</div>
+								<img src="<?php echo $v['litpic']; ?>" >
+								<div class="cont">
+									<p><?php echo $v['title']; ?></p>
+									<p><?php echo strip_tags(htmlspecialchars_decode($v['content'])); ?></p>
 								</div>
 							</li>
-							<?php endforeach; endif; else: echo "" ;endif; ?>
-						</ul>
-						<!-- 分页 -->
-						<?php echo $cate_data['new_arr']->render(); ?>
 
+							<?php endforeach; endif; else: echo "" ;endif; ?>
+							
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -134,6 +111,8 @@
 </main>
 		
 
+		
+		
 		<script src="/public/static/index/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/public/static/index/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/public/static/index/js/scroll.js" type="text/javascript" charset="utf-8"></script>

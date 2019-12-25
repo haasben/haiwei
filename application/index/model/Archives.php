@@ -10,10 +10,6 @@ class Archives extends Model
 {
 	protected $name = 'archives';
 
-
-
-
-
 //获取文章列表新闻详情
 	public function nesw_info($aid){
 
@@ -45,9 +41,6 @@ class Archives extends Model
 		->limit(1)
 		->find();
 		return $data;
-
-
-
 	}
 
 
@@ -401,7 +394,24 @@ class Archives extends Model
 				->select();
 		}
 		return $data;
+	}
+
+//获取图集列表某个分类下面的所有文章
+	public function cate_images_all_content($id){
+
+		$data = self::alias('a')
+			->field('a.aid,a.title,a.litpic,hc.content')
+			->join('h_images_content hc','hc.aid = a.aid')
+			->where('a.typeid',$id)
+			->where('a.is_del',0)
+			->where('a.status',1)
+			->where('a.arcrank',0)
+			->order('sort_order')
+			->select();
+		return $data;
+
 
 
 	}
+
 }
