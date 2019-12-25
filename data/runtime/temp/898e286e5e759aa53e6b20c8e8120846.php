@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:53:"D:\WWW\haiwei/application/index\view\index\index.html";i:1576834570;s:46:"D:\WWW\haiwei\application\index\view\head.html";i:1577173584;s:53:"D:\WWW\haiwei\application\index\view\common\left.html";i:1577173947;s:48:"D:\WWW\haiwei\application\index\view\footer.html";i:1576658880;s:53:"D:\WWW\haiwei\application\index\view\mobile_head.html";i:1576658686;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:53:"D:\WWW\haiwei/application/index\view\index\index.html";i:1577244730;s:46:"D:\WWW\haiwei\application\index\view\head.html";i:1577173584;s:53:"D:\WWW\haiwei\application\index\view\common\left.html";i:1577173947;s:48:"D:\WWW\haiwei\application\index\view\footer.html";i:1576658880;s:53:"D:\WWW\haiwei\application\index\view\mobile_head.html";i:1576658686;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -116,6 +116,7 @@
 			}
 			.line{height: 10px;display: inline-block;line-height: 1px;color: #ebf400;}
 			body::-webkit-scrollbar{display: none;}
+			a:hover{text-decoration:none}
 		</style>
 
 
@@ -219,6 +220,8 @@
 				</div>
 			</div>
 			
+
+
 			<div class="section section_news">
 				<!-- 新闻动态 -->
 				<div class="news">
@@ -236,14 +239,14 @@
 							
 							<div class="top_wrap">
 								<div class="time"><?php echo date('Y.m.d',$first_new['add_time']); ?></div>
-								<h4><?php echo $first_new['title']; ?></h4>
+								<a href="/news_info?aid=<?php echo $first_new['aid']; ?>&typeid=<?php echo $first_new['typeid']; ?>"><h4><?php echo $first_new['title']; ?></h4></a>
 								<p><?php echo mb_substr(strip_tags(htmlspecialchars_decode($first_new['content'])),0,20); ?></p>
 							</div>
 							
 							<ul>
 								<?php if(is_array($news['child']) || $news['child'] instanceof \think\Collection || $news['child'] instanceof \think\Paginator): $i = 0;$__LIST__ = is_array($news['child']) ? array_slice($news['child'],1,3, true) : $news['child']->slice(1,3, true); if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
 								<li>
-									<a href="#">
+									<a href="/news_info?aid=<?php echo $v['aid']; ?>&typeid=<?php echo $v['typeid']; ?>">
 										<span><?php echo date('Y.m.d',$v['add_time']); ?></span>
 										<img src="<?php echo $v['litpic']; ?>" >
 										<p>
@@ -448,14 +451,14 @@
 						<div class="right">
 							<div class="top_wrap">
 								<div class="time"><?php echo date('Y.m.d',$first_new['add_time']); ?></div>
-								<h4><?php echo $first_new['title']; ?></h4>
+								<a href="/news_info?aid=<?php echo $first_new['aid']; ?>&typeid=<?php echo $first_new['typeid']; ?>"><h4><?php echo $first_new['title']; ?></h4></a>
 								<p><?php echo mb_substr(strip_tags(htmlspecialchars_decode($first_new['content'])),0,20); ?>......</p>
 							</div>
 							
 							<ul>
 								<?php if(is_array($news['child']) || $news['child'] instanceof \think\Collection || $news['child'] instanceof \think\Paginator): $i = 0;$__LIST__ = is_array($news['child']) ? array_slice($news['child'],1,3, true) : $news['child']->slice(1,3, true); if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
 								<li>
-									<a href="#">
+									<a href="/news_info?aid=<?php echo $v['aid']; ?>&typeid=<?php echo $v['typeid']; ?>">
 										<span><?php echo date('Y.m.d',$v['add_time']); ?></span>
 										<img src="<?php echo $v['litpic']; ?>" >
 										<p>

@@ -66,6 +66,7 @@ class Index extends Base
             $new_id = 35;
         }
         $news = $this->archives->index_news($new_id,$this->lang);
+        // dump($news);die;
         return $news;
         
     }

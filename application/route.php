@@ -59,6 +59,8 @@ $routes = array(
      'rczp'=>'index/rczp/index',
      'rczp/jrwm'=>'index/rczp/jrwm',
      'rczp/rcfz'=>'index/rczp/rcfz',
+     'rczp/lxwm'=>'index/rczp/lxwm',
+     'rczp/zwzp'=>'index/rczp/zwzp',
 );
 
 $route = array(

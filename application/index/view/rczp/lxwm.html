@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$cate_data.seo_title}</title>
+		<meta name="keywords" content="{$cate_data.seo_keywords}" />
+		<meta name="description" content="{$cate_data.seo_description}"/>
+		<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/css.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/recruit.css"/>
+		<style type="text/css">
+			.BMapLib_bubble_center td{box-sizing: content-box;}
+		</style>
+	</head>
+	<body>
+{include file="gywm/head"}
+			<div class="container">
+				<div class="row box tabs">
+					<h3>{$cate_data.typename}</h3>
+				</div>
+				<div class="row box box1">
+					<div class="rczp_wrap">
+						<div class="contact">
+							<div id="map"></div>
+							<!-- 联系方式 -->
+							<div class="contact_method">
+								<ul>
+									{if condition="$lang == 'cn'"}
+									<li>
+										<div style="background-image: url(__INDEX__/img/ct1.png);"></div>
+										<p>
+											<span>座机</span>
+											<span>{$web_config.web_attr_1}</span>
+										</p>
+									</li>
+									<li>
+										<div style="background-image: url(__INDEX__/img/ct2.png);"></div>
+										<p>
+											<span>传真</span>
+											<span>{$web_config.web_attr_21}</span>
+										</p>
+									</li>
+									<li>
+										<div style="background-image: url(__INDEX__/img/ct3.png);"></div>
+										<p>
+											<span>网址</span>
+											<span>{$web_config.web_basehost}</span>
+										</p>
+									</li>
+									<li>
+										<div style="background-image: url(__INDEX__/img/ct4.png);"></div>
+										<p>
+											<span>地址</span>
+											<span>{$web_config.web_attr_18}</span>
+										</p>
+									</li>
+									{else}
+										<li>
+										<div style="background-image: url(__INDEX__/img/ct1.png);"></div>
+										<p>
+											<span>Landline</span>
+											<span>{$web_config.web_attr_1}</span>
+										</p>
+										</li>
+										<li>
+											<div style="background-image: url(__INDEX__/img/ct2.png);"></div>
+											<p>
+												<span>fax</span>
+												<span>{$web_config.web_attr_21}</span>
+											</p>
+										</li>
+										<li>
+											<div style="background-image: url(__INDEX__/img/ct3.png);"></div>
+											<p>
+												<span>URL</span>
+												<span>{$web_config.web_basehost}</span>
+											</p>
+										</li>
+										<li>
+											<div style="background-image: url(__INDEX__/img/ct4.png);"></div>
+											<p>
+												<span>address</span>
+												<span>{$web_config.web_attr_18}</span>
+											</p>
+										</li>
+
+									{/if}
+
+								</ul>
+							</div>
+							<!-- 合作联系 -->
+							<div class="contact_form">
+								<div class="tt">
+									<p>
+										{if condition ="$lang == cn"}
+										<span>合作联系：</span>
+										（如果您对中芯国际有任何的问题及建议，可通过上面所列联系方式或提交以下表单与我们联络。）
+										</p>
+										<p>注：<span>*</span>必须填写</p>
+										{else}
+										<span>Cooperation Contact:</span>
+										(If you have any questions and suggestions about SMIC, you can contact us through the contact information listed above or submit the form below.)
+										</p>
+										<p>Note：<span>*</span>Required</p>
+										{/if}
+									
+								</div>
+								<div class="fm">
+									<form class="form">
+
+										<div class="wrap">
+										{volist name="$attr" id="v"}
+										{switch name="$v.attr_input_type"}
+										    {case value="0"}
+											    <div class="">
+													<label for="">{if condition="$v.is_required == 1"}<em>*</em>{/if}{$v.attr_name}</label>
+													<input type="text" name="attr_{$v.attr_id}" id="" value=""/>
+												</div>	
+										    {/case}
+										    {case value="1"}
+										    	<div class="">
+													<label></label>
+													<select name="attr_{$v.attr_id}">
+														{volist name="$v.attr_values" id="av" key="k"}
+														<option value ="{if condition='$k!=1'}{$av}{/if}">{$av}</option>
+														{/volist}
+													</select>
+												</div>
+										    {/case}
+										    {default /}
+										{/switch}
+											
+											{/volist}
+										</div>
+										{volist name="$attr_input_type2" id="v"}
+										<div class="message">
+											<label for=""><em>*</em>{$v.attr_name}</label>
+											<textarea name="attr_{$v.attr_id}"></textarea>
+										</div>
+										{/volist}
+										{if condition ="$lang == cn"}
+										<div class="btns">
+											<input type="submit" id="submit" value=" 提交"/>
+											<input type="reset" name="" id="" value="重置" />
+										</div>
+										{else}
+											<div class="btns">
+											<input type="submit" id="submit" value="submit"/>
+											<input type="reset" name="" id="" value="Reset" />
+										</div>
+										{/if}
+										<input type="hidden" name="typeid" value="{$cate_data.id}">
+										<input type="hidden" class="token" name="__token__" value="{$Request.token}"/>
+									</form>
+									<div class="tips">
+										{if condition ="$lang == cn"}
+										<p>请填写相关信息，获得更多的相关资讯，以便我们能更好的为您服务！</p>
+										<p>
+											<span>网址：{$web_config.web_basehost}</span>
+											<span>Email：{$web_config.web_attr_17}</span>
+										</p>
+										{else}
+											<p>Please fill in the relevant information for more relevant information so that we can better serve you!</p>
+										<p>
+											<span>URL：{$web_config.web_basehost}</span>
+											<span>Email：{$web_config.web_attr_17}</span>
+										</p>
+										{/if}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+{include file="common/footer"}
+		
+		
+		<script src="__INDEX__/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/scroll.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/public/plugins/layer-v3.1.0/layer.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=QjzOrQyA4SBF0R14jfMFlPS2ZvIB89uz"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+		<script type="text/javascript">
+			// 地图
+			var map = new BMap.Map("map");            // 创建Map实例
+			var point = new BMap.Point(104.007501,30.464329);  
+			var marker = new BMap.Marker(point);  // 创建标注
+			map.addOverlay(marker);
+			map.centerAndZoom(point,17);               
+			map.enableScrollWheelZoom();
+			map.disableScrollWheelZoom();
+			map.addControl(new BMap.NavigationControl());   //控件
+			var content = '<div style="margin:0;line-height:20px;padding:2px;">' +
+                    '附近公交/地铁公交：地铁5号线（回龙路站）公交813路。' +
+                  '</div>';
+			var searchInfoWindow = new BMapLib.SearchInfoWindow(map, content, {
+				title  : "成都海威华芯科技有限公司",      //标题
+				width  : 290,             //宽度
+				height : 80,              //高度
+				panel  : "panel",         //检索结果面板
+				enableAutoPan : true,     //自动平移
+				searchTypes   :[
+					BMAPLIB_TAB_SEARCH,   //周边检索
+					BMAPLIB_TAB_TO_HERE,  //到这里去
+					BMAPLIB_TAB_FROM_HERE //从这里出发
+				]
+			});
+			searchInfoWindow.open(point);
+			marker.addEventListener("click", function(e){
+				searchInfoWindow.open(marker);
+			})
+
+			$(function(){
+				$('#submit').on('click',function(){
+					var data = $('.form').serialize();
+					$.post('{:url("index/rczp/gbook_submit")}',data,function(data){
+
+						if(data.code == 1){
+							$('.form')[0].reset();
+							layer.msg(data.msg,{icon:1,time:1500});
+						}else{
+							layer.msg(data.msg,{icon:5,time:1000});
+						}
+
+						$('.token').val(data.token);
+					})
+
+
+					return false;
+				})
+
+
+			})
+
+
+
+		</script>
+	</body>
+</html>

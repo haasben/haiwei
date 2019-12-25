@@ -57,6 +57,7 @@
 			}
 			.line{height: 10px;display: inline-block;line-height: 1px;color: #ebf400;}
 			body::-webkit-scrollbar{display: none;}
+			a:hover{text-decoration:none}
 		</style>
 
 
@@ -160,6 +161,8 @@
 				</div>
 			</div>
 			
+
+
 			<div class="section section_news">
 				<!-- 新闻动态 -->
 				<div class="news">
@@ -177,14 +180,14 @@
 							
 							<div class="top_wrap">
 								<div class="time">{:date('Y.m.d',$first_new.add_time)}</div>
-								<h4>{$first_new.title}</h4>
+								<a href="/news_info?aid={$first_new.aid}&typeid={$first_new.typeid}"><h4>{$first_new.title}</h4></a>
 								<p>{:mb_substr(strip_tags(htmlspecialchars_decode($first_new.content)),0,20)}</p>
 							</div>
 							
 							<ul>
 								{volist name="$news['child']" id="v" offset="1" length='3'}
 								<li>
-									<a href="#">
+									<a href="/news_info?aid={$v.aid}&typeid={$v.typeid}">
 										<span>{:date('Y.m.d',$v.add_time)}</span>
 										<img src="{$v.litpic}" >
 										<p>
@@ -363,14 +366,14 @@
 						<div class="right">
 							<div class="top_wrap">
 								<div class="time">{:date('Y.m.d',$first_new.add_time)}</div>
-								<h4>{$first_new.title}</h4>
+								<a href="/news_info?aid={$first_new.aid}&typeid={$first_new.typeid}"><h4>{$first_new.title}</h4></a>
 								<p>{:mb_substr(strip_tags(htmlspecialchars_decode($first_new.content)),0,20)}......</p>
 							</div>
 							
 							<ul>
 								{volist name="$news['child']" id="v" offset="1" length='3'}
 								<li>
-									<a href="#">
+									<a href="/news_info?aid={$v.aid}&typeid={$v.typeid}">
 										<span>{:date('Y.m.d',$v.add_time)}</span>
 										<img src="{$v.litpic}" >
 										<p>

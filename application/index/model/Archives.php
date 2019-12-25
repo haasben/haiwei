@@ -156,14 +156,14 @@ class Archives extends Model
         //新闻动态
         $news['child'] = self::alias('a')
             ->join('h_article_content ha','ha.aid = a.aid')
-            ->field('a.aid,a.title,a.litpic,a.add_time,ha.content')
+            ->field('a.aid,a.title,a.litpic,a.add_time,ha.content,a.typeid')
             ->where('a.lang',$lang)
             ->where('a.status',1)
             ->where('a.is_del',0)
             ->where('a.channel',1)
             ->where('a.arcrank',0)
             ->limit(4)
-            ->order('aid desc')
+            ->order('a.aid desc')
             ->select();
         return $news;
 	}
@@ -410,8 +410,39 @@ class Archives extends Model
 			->select();
 		return $data;
 
+	}
+//获取到职位招聘下面所有的招聘信息
+	public function get_cate_recruitment($id){
 
+		$data = self::alias('a')
+			->field('a.aid,a.title,hc.gzdd,hc.zprs,hc.nnxq,a.add_time')
+			->join("h_recruit_content hc",'hc.aid = a.aid')
+			->where('a.typeid',$id)
+			->where('a.is_del',0)
+			->where('a.status',1)
+			->where('a.arcrank',0)
+			->order('a.add_time desc')
+			->select();
+		return $data;
 
 	}
+//获取到职位招聘下面所有的招聘信息
+	public function get_cate_recruitment_one($aid){
+
+		$data = self::alias('a')
+			->field('a.aid,a.title,hc.gzdd,hc.zprs,hc.nnxq,a.add_time')
+			->join("h_recruit_content hc",'hc.aid = a.aid')
+			->where('a.aid',$aid)
+			->where('a.is_del',0)
+			->where('a.status',1)
+			->where('a.arcrank',0)
+			->limit(1)
+			->find();
+		$data['nnxq'] = htmlspecialchars_decode($data['nnxq']);
+		$data['add_time'] = date('Y/m/d',$data['add_time']);
+		return $data;
+
+	}
+
 
 }

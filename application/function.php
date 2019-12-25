@@ -10,7 +10,11 @@
  * Author: 小虎哥 <1105415366@qq.com>
  * Date: 2018-4-3
  */
-
+//获取TOKEN
+function get_token(){
+    $token = request()->token();
+    return $token;
+}
 if (!function_exists('convert_arr_key')) 
 {
     /**

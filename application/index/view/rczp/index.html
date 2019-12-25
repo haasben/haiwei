@@ -1,1 +1,113 @@
-人才招聘
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$cate_data.seo_title}</title>
+		<meta name="keywords" content="{$cate_data.seo_keywords}" />
+		<meta name="description" content="{$cate_data.seo_description}"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/css.css"/>
+		<link rel="stylesheet" type="text/css" href="__INDEX__/css/recruit.css"/>
+	</head>
+	<body>
+{include file="gywm/head"}
+			<div class="container">
+				<div class="row box tabs">
+					<h3>{$cate_data.typename}</h3>
+				</div>
+				<div class="row box box1">
+					<div class="rczp_wrap">
+						<div class="zwzp">
+							<ul>
+								{volist name="$rczp_data" id="v"}
+								<li>
+									<h4>{$v.title}</h4>
+									<p>
+										<span>招聘人数：<em>{$v.zprs}</em></span>&nbsp;&nbsp;|&nbsp;
+										<span>工作地点：<em>{$v.gzdd}</em></span>&nbsp;&nbsp;|&nbsp;
+										<span>发布日期：<em>{:date('Y/m/d',$v.add_time)}</em></span>
+									</p>
+									<div class="desc">
+										{:htmlspecialchars_decode($v.content)}
+									</div>
+									<a href="javascript:" data-id="{$v.aid}" class="more">了解更多</a>
+								</li>
+								{/volist}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+{include file="common/footer"}
+		
+		
+		<!-- 详情弹窗 -->
+		<div class="mark"></div>
+		<div class="zwzp_detail">
+			<div class="cha">×</div>
+			<div class="wrap">
+				<div class="title">
+					<h4>GaAs工艺研发师</h4>
+					<p>
+						<span>招聘人数：<em class="renshu">3</em></span>&nbsp;&nbsp;|&nbsp;
+						<span>工作地点：<em class="gzdd">成都</em></span>&nbsp;&nbsp;|&nbsp;
+						<span>发布日期：<em class="add_time">2019/12/12</em></span>
+					</p>
+				</div>
+				<div class="details nnxq">
+					<!-- <p style="color: rgba(200, 55, 4, 1);">岗位职责：</p>
+					<p>1、根据实际需求，进行GaAs外延、器件结构设计及仿真；</p>
+					<p>2、GaAs工艺开发过程中，对器件关键工艺进行设计及仿真，协助工艺工程师共同开展工艺参数调试工作；</p>
+					<p>3、负责收集、调研GaAs外延产品销售市场动态，跟踪产品技术信息与技术动态。</p>
+					<p></p>
+					<p></p>	
+				    <p style="color: rgba(200, 55, 4, 1);">岗位要求：</p>
+				    <p>A、本科以上学历，微电子、电子工程、材料等相关专业；</p>
+				    <p>B、三年以上工作，熟悉GaAs芯片工艺，能熟练使用各种仿真工具；</p>
+				    <p>C、良好的人际沟通能力和语言文字表达能力，具有积极主动、认真细致的工作作风，注重团队合作、性格沉稳。</p>
+					<p></p>	 
+					<p></p>	
+					<p style="color: rgba(200, 55, 4, 1);">工作地点：</p>
+					<p>成都市双流区物联大道88号</p>
+					<p></p>
+					<p></p>	
+					<p style="color: rgba(200, 55, 4, 1);">E-mail：</p>
+					<p>hr@hiwafer.com</p>
+					<p></p>
+					<p></p>	
+					<p style="color: rgba(200, 55, 4, 1);">HR电话：</p>
+					<p>028-65796060</p>
+					<p></p>
+					<p></p>	
+					<p style="color: rgba(200, 55, 4, 1);">注：投简历时，内容必须真实详细，并注明希望薪资及应聘职位，经验丰富者工资可面谈。</p> -->
+				</div>
+				<!-- <div class="yao">诚邀您的加入！</div> -->
+			</div>
+		</div>
+		
+		<script src="__INDEX__/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__INDEX__/js/scroll.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$('.more').on('click', function(){
+				
+				var aid = $(this).attr('data-id');
+				$.post('{:url("index/rczp/rczp_info")}',{aid:aid},function(data){
+					$('.renshu').text(data.data.zprs);
+					$('.gzdd').text(data.data.gzdd);
+					$('.add_time').text(data.data.add_time);
+					$('.nnxq').html(data.data.nnxq);
+					$('.mark').show();
+					$('.zwzp_detail').show();
+				})
+
+			})
+			$('.cha').on('click', function(){
+				$('.mark').hide();
+				$('.zwzp_detail').hide();
+			})
+		</script>
+	</body>
+</html>
