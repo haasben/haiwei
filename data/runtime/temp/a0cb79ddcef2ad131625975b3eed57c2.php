@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:52:"D:\WWW\haiwei/application/index\view\rczp\index.html";i:1577269659;s:51:"D:\WWW\haiwei\application\index\view\gywm\head.html";i:1577173633;s:53:"D:\WWW\haiwei\application\index\view\common\left.html";i:1577173947;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577151019;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:52:"D:\WWW\haiwei/application/index\view\rczp\index.html";i:1577324937;s:51:"D:\WWW\haiwei\application\index\view\gywm\head.html";i:1577173633;s:53:"D:\WWW\haiwei\application\index\view\common\left.html";i:1577173947;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577151019;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -72,9 +72,15 @@
 								<li>
 									<h4><?php echo $v['title']; ?></h4>
 									<p>
+										<?php if($lang=='cn'): ?>
 										<span>招聘人数：<em><?php echo $v['zprs']; ?></em></span>&nbsp;&nbsp;|&nbsp;
 										<span>工作地点：<em><?php echo $v['gzdd']; ?></em></span>&nbsp;&nbsp;|&nbsp;
 										<span>发布日期：<em><?php echo date('Y/m/d',$v['add_time']); ?></em></span>
+										<?php else: ?>
+										<span>Recruitment：<em><?php echo $v['zprs']; ?></em></span>&nbsp;&nbsp;|&nbsp;
+										<span>work place：<em><?php echo $v['gzdd']; ?></em></span>&nbsp;&nbsp;|&nbsp;
+										<span>Release date：<em><?php echo date('Y/m/d',$v['add_time']); ?></em></span>
+										<?php endif; ?>
 									</p>
 									<div class="desc">
 										<?php echo htmlspecialchars_decode($v['content']); ?>
@@ -123,11 +129,18 @@
 			<div class="cha">×</div>
 			<div class="wrap">
 				<div class="title">
-					<h4>GaAs工艺研发师</h4>
+					<h4 class="title_info">GaAs工艺研发师</h4>
 					<p>
+						<?php if($lang=='cn'): ?>
 						<span>招聘人数：<em class="renshu">3</em></span>&nbsp;&nbsp;|&nbsp;
 						<span>工作地点：<em class="gzdd">成都</em></span>&nbsp;&nbsp;|&nbsp;
 						<span>发布日期：<em class="add_time">2019/12/12</em></span>
+						<?php else: ?>
+						<span>Recruitment：<em class="renshu">3</em></span>&nbsp;&nbsp;|&nbsp;
+						<span>work place：<em class="gzdd">成都</em></span>&nbsp;&nbsp;|&nbsp;
+						<span>Release date：<em class="add_time">2019/12/12</em></span>
+
+						<?php endif; ?>
 					</p>
 				</div>
 				<div class="details nnxq">
@@ -169,6 +182,7 @@
 				
 				var aid = $(this).attr('data-id');
 				$.post('<?php echo url("index/rczp/rczp_info"); ?>',{aid:aid},function(data){
+					$('.title_info').text(data.data.title)
 					$('.renshu').text(data.data.zprs);
 					$('.gzdd').text(data.data.gzdd);
 					$('.add_time').text(data.data.add_time);

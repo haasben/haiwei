@@ -24,9 +24,15 @@
 								<li>
 									<h4>{$v.title}</h4>
 									<p>
+										{if condition ="$lang=='cn'"}
 										<span>招聘人数：<em>{$v.zprs}</em></span>&nbsp;&nbsp;|&nbsp;
 										<span>工作地点：<em>{$v.gzdd}</em></span>&nbsp;&nbsp;|&nbsp;
 										<span>发布日期：<em>{:date('Y/m/d',$v.add_time)}</em></span>
+										{else}
+										<span>Recruitment：<em>{$v.zprs}</em></span>&nbsp;&nbsp;|&nbsp;
+										<span>work place：<em>{$v.gzdd}</em></span>&nbsp;&nbsp;|&nbsp;
+										<span>Release date：<em>{:date('Y/m/d',$v.add_time)}</em></span>
+										{/if}
 									</p>
 									<div class="desc">
 										{:htmlspecialchars_decode($v.content)}
@@ -49,11 +55,18 @@
 			<div class="cha">×</div>
 			<div class="wrap">
 				<div class="title">
-					<h4>GaAs工艺研发师</h4>
+					<h4 class="title_info">GaAs工艺研发师</h4>
 					<p>
+						{if condition ="$lang=='cn'"}
 						<span>招聘人数：<em class="renshu">3</em></span>&nbsp;&nbsp;|&nbsp;
 						<span>工作地点：<em class="gzdd">成都</em></span>&nbsp;&nbsp;|&nbsp;
 						<span>发布日期：<em class="add_time">2019/12/12</em></span>
+						{else}
+						<span>Recruitment：<em class="renshu">3</em></span>&nbsp;&nbsp;|&nbsp;
+						<span>work place：<em class="gzdd">成都</em></span>&nbsp;&nbsp;|&nbsp;
+						<span>Release date：<em class="add_time">2019/12/12</em></span>
+
+						{/if}
 					</p>
 				</div>
 				<div class="details nnxq">
@@ -95,6 +108,7 @@
 				
 				var aid = $(this).attr('data-id');
 				$.post('{:url("index/rczp/rczp_info")}',{aid:aid},function(data){
+					$('.title_info').text(data.data.title)
 					$('.renshu').text(data.data.zprs);
 					$('.gzdd').text(data.data.gzdd);
 					$('.add_time').text(data.data.add_time);

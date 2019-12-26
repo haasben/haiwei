@@ -111,6 +111,7 @@
 									<form class="form">
 
 										<div class="wrap">
+											<?php $value = 0;?>
 										{volist name="$attr" id="v"}
 										{switch name="$v.attr_input_type"}
 										    {case value="0"}
@@ -120,11 +121,12 @@
 												</div>	
 										    {/case}
 										    {case value="1"}
+										    <?php $value++;?>
 										    	<div class="">
 													<label></label>
-													<select name="attr_{$v.attr_id}">
+													<select name="attr_{$v.attr_id}" {if condition="$value == 2"}id="country"{/if}>
 														{volist name="$v.attr_values" id="av" key="k"}
-														<option value ="{if condition='$k!=1'}{$av}{/if}">{$av}</option>
+														<option  value ="{if condition='$k!=1'}{$av}{/if}">{$av}</option>
 														{/volist}
 													</select>
 												</div>
@@ -216,6 +218,28 @@
 			})
 
 			$(function(){
+
+				$.post('{:url("index/rczp/choose_country")}',function(data){
+
+					var html = $('#country').html();
+					$.each(data,function(item,v){
+
+						html+='<option value="'+v.name+'">'+v.name+'</option>';
+
+					})
+
+
+					$('#country').html(html);
+
+
+
+				})
+
+
+
+
+
+
 				$('#submit').on('click',function(){
 					var data = $('.form').serialize();
 					$.post('{:url("index/rczp/gbook_submit")}',data,function(data){
@@ -229,8 +253,6 @@
 
 						$('.token').val(data.token);
 					})
-
-
 					return false;
 				})
 

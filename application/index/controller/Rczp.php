@@ -246,4 +246,19 @@ class Rczp extends Cates
     }
 
 
+    //选择国家地区
+    public function choose_country(){
+
+        $lang = $this->lang;
+        $field = ($lang == 'cn')?'zh_name as name':'name';
+
+        $data = Db::name('country')
+            ->field($field)
+            ->where('is_show',1)
+            ->select();
+            
+        return $data;
+
+    }
+
 }

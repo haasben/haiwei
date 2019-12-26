@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:51:"D:\WWW\haiwei/application/index\view\rczp\lxwm.html";i:1577264731;s:51:"D:\WWW\haiwei\application\index\view\gywm\head.html";i:1577173633;s:53:"D:\WWW\haiwei\application\index\view\common\left.html";i:1577173947;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577151019;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:51:"D:\WWW\haiwei/application/index\view\rczp\lxwm.html";i:1577324053;s:51:"D:\WWW\haiwei\application\index\view\gywm\head.html";i:1577173633;s:53:"D:\WWW\haiwei\application\index\view\common\left.html";i:1577173947;s:55:"D:\WWW\haiwei\application\index\view\common\footer.html";i:1577151019;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -159,17 +159,17 @@
 									<form class="form">
 
 										<div class="wrap">
-										<?php if(is_array($attr) || $attr instanceof \think\Collection || $attr instanceof \think\Paginator): $i = 0; $__LIST__ = $attr;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;switch($v['attr_input_type']): case "0": ?>
+											<?php $value = 0;if(is_array($attr) || $attr instanceof \think\Collection || $attr instanceof \think\Paginator): $i = 0; $__LIST__ = $attr;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;switch($v['attr_input_type']): case "0": ?>
 											    <div class="">
 													<label for=""><?php if($v['is_required'] == 1): ?><em>*</em><?php endif; ?><?php echo $v['attr_name']; ?></label>
 													<input type="text" name="attr_<?php echo $v['attr_id']; ?>" id="" value=""/>
 												</div>	
-										    <?php break; case "1": ?>
+										    <?php break; case "1": $value++;?>
 										    	<div class="">
 													<label></label>
-													<select name="attr_<?php echo $v['attr_id']; ?>">
+													<select name="attr_<?php echo $v['attr_id']; ?>" <?php if($value == 2): ?>id="country"<?php endif; ?>>
 														<?php if(is_array($v['attr_values']) || $v['attr_values'] instanceof \think\Collection || $v['attr_values'] instanceof \think\Paginator): $k = 0; $__LIST__ = $v['attr_values'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$av): $mod = ($k % 2 );++$k;?>
-														<option value ="<?php if($k!=1): ?><?php echo $av; endif; ?>"><?php echo $av; ?></option>
+														<option  value ="<?php if($k!=1): ?><?php echo $av; endif; ?>"><?php echo $av; ?></option>
 														<?php endforeach; endif; else: echo "" ;endif; ?>
 													</select>
 												</div>
@@ -282,6 +282,28 @@
 			})
 
 			$(function(){
+
+				$.post('<?php echo url("index/rczp/choose_country"); ?>',function(data){
+
+					var html = $('#country').html();
+					$.each(data,function(item,v){
+
+						html+='<option value="'+v.name+'">'+v.name+'</option>';
+
+					})
+
+
+					$('#country').html(html);
+
+
+
+				})
+
+
+
+
+
+
 				$('#submit').on('click',function(){
 					var data = $('.form').serialize();
 					$.post('<?php echo url("index/rczp/gbook_submit"); ?>',data,function(data){
@@ -295,8 +317,6 @@
 
 						$('.token').val(data.token);
 					})
-
-
 					return false;
 				})
 
